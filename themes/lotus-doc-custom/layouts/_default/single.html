@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="mb-4" id="content">
+    <!-- Header, mimicking landing page -->
+    <header class="hero">
+        <div class="container text-center">
+            <h1>{{ .Title }}</h1>
+            {{ if .Description }}
+            <p class="lead">{{ .Description }}</p>
+            {{ end }}
+        </div>
+    </header>
+    <!-- Markdown content -->
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                {{ .Content }}
+            </div>
+        </div>
+    </section>
+</div>
+{{ end }}

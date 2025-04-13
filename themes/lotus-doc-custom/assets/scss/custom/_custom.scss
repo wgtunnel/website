@@ -1,0 +1,196 @@
+/* Light mode */
+.landing-wrapper {
+    background-color: $white; // #ffffff
+    color: $gray-900; // #212529
+  
+    .hero-section {
+      background-color: $white;
+      color: $gray-900;
+    }
+  
+    .card {
+      background-color: $gray-100; // #f8f9fa
+      color: $gray-900;
+      border-color: $gray-300; // #dee2e6
+    }
+  
+    h1, h2, h3, h4, h5, h6 {
+      color: $gray-900 !important;
+    }
+  
+    a {
+      color: $blue; // #0066ff
+    }
+    a:hover {
+      color: $blue-600;
+    }
+  
+    .btn-primary {
+      background-color: $blue;
+      border-color: $blue;
+      color: $white;
+    }
+  
+    .landing-header {
+      background-color: transparent;
+    }
+  }
+  
+  /* Dark mode */
+  [data-bs-theme="dark"] {
+    .landing-wrapper {
+      background-color: $gray-900 !important; // #212529
+      color: $gray-100 !important; // #f8f9fa
+  
+      .hero-section {
+        background-color: $gray-900 !important;
+        color: $gray-100 !important;
+      }
+  
+      .card {
+        background-color: $gray-800 !important; // #343a40
+        color: $gray-100 !important;
+        border-color: $gray-700 !important; // #495057
+      }
+  
+      h1, h2, h3, h4, h5, h6 {
+        color: $gray-100 !important;
+      }
+  
+      a {
+        color: $blue-400 !important;
+      }
+      a:hover {
+        color: $blue-300 !important;
+      }
+  
+      .btn-primary {
+        background-color: $blue-600 !important;
+        border-color: $blue-700 !important;
+        color: $white !important;
+      }
+  
+      .landing-header {
+        background-color: transparent !important;
+      }
+  
+      .footer,
+      .feature-grid {
+        background-color: $gray-900 !important;
+        color: $gray-100 !important;
+      }
+    }
+  }
+  
+  /* Toggle styling (match docs) */
+  .top-header {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+    position: fixed !important; // Stick to top like docs
+    top: 0;
+    left: 0;
+    z-index: 1030 !important; // Above other elements
+    padding: 0;
+    margin: 0;
+    background-color: $white; // Match docs’ header
+  }
+  
+  .header-bar {
+    display: flex !important;
+    visibility: visible !important;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem !important;
+    width: 100%;
+    max-width: 1200px; // Constrain like docs
+    margin: 0 auto;
+  }
+  
+  #mode {
+    display: inline-flex !important;
+    visibility: visible !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0.25rem !important;
+    margin-left: 0.5rem !important; // ms-2
+    color: $gray-600 !important;
+    line-height: 1;
+    cursor: pointer;
+    &.btn-icon {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+    &.btn-default {
+      background-color: transparent !important;
+      border: none !important;
+    }
+    .toggle-dark {
+      display: inline !important;
+      visibility: visible !important;
+    }
+    .toggle-light {
+      display: none !important;
+    }
+    svg {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+      fill: currentColor !important;
+    }
+    &:hover {
+      color: $gray-800 !important;
+    }
+  }
+  
+  [data-bs-theme="dark"] {
+    .top-header {
+      background-color: $gray-900 !important;
+    }
+    #mode {
+      color: $gray-100 !important;
+      .toggle-dark {
+        display: none !important;
+      }
+      .toggle-light {
+        display: inline !important;
+        visibility: visible !important;
+      }
+      &:hover {
+        color: $white !important;
+      }
+    }
+  }
+  
+  /* Mobile visibility */
+  @media (max-width: 991.98px) {
+    .top-header {
+      display: block !important;
+      visibility: visible !important;
+      position: fixed !important;
+      top: 0;
+      padding: 0.5rem !important;
+    }
+    .header-bar {
+      display: flex !important;
+      visibility: visible !important;
+      padding: 0.5rem !important;
+      justify-content: flex-end;
+    }
+    #mode {
+      display: inline-flex !important;
+      visibility: visible !important;
+    }
+  }
+  
+  /* Reset landing-header */
+  .landing-header {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: transparent !important;
+    z-index: 1020;
+  }

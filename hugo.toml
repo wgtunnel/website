@@ -3,15 +3,12 @@ languageCode = "en-us"
 title = "WG Tunnel"
 # enableGitInfo = true
 
+theme = "lotus-doc-custom"
 
 [permalinks]
     community = "/community/"
 
 [module]
-    replacements = "github.com/colinwilson/lotusdocs -> lotusdocs"
-    [[module.imports]]
-        path = "github.com/colinwilson/lotusdocs"
-        disable = false
     [[module.imports]]
         path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
         disable = false
