@@ -1,7 +1,7 @@
-baseURL = "http://wgtunnel.com/"
+baseURL = "https://wgtunnel.com/"
 languageCode = "en-us"
 title = "WG Tunnel"
-# enableGitInfo = true
+enableGitInfo = true
 
 theme = "lotus-doc-custom"
 
@@ -65,11 +65,11 @@ theme = "lotus-doc-custom"
         prismTheme      = "twilight"                         # (optional) - Set theme for PrismJS. Options include: lotusdocs (default), solarized-light, twilight, lucario
 
 #         # gitinfo
-        # repoURL         = "https://github.com/wgtunnel/wgtunnel"  # Git repository URL for your site [support for GitHub, GitLab, and BitBucket]
-        # repoBranch      = "main"                           # Name of your Git repository branch
-        # editPage        = true                                # enable 'Edit this page' feature - default false
-        # lastMod         = true                                # enable 'Last modified' date on pages - default false
-        # lastModRelative = true                                # format 'Last modified' time as relative - default true
+         repoURL         = "https://github.com/wgtunnel/website"  # Git repository URL for your site [support for GitHub, GitLab, and BitBucket]
+         repoBranch      = "main"                           # Name of your Git repository branch
+         editPage        = true                                # enable 'Edit this page' feature - default false
+         lastMod         = true                                # enable 'Last modified' date on pages - default false
+         lastModRelative = true                                # format 'Last modified' time as relative - default true
 
         # ToC
         toc             = true                                # enable table of contents? default is true
