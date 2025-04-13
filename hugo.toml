@@ -117,8 +117,8 @@ theme = "lotus-doc-custom"
 #      identifier = "enterprise"
 #      weight = 20
 
- [[menu.primary]]
-     name  = "Community"
-     url = "/community/"
-     identifier = "community"
-     weight = 30
+# [[menu.primary]]
+#     name  = "Community"
+#     url = "/community/"
+#     identifier = "community"
+#     weight = 30
