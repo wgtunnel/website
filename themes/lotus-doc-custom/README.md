@@ -166,7 +166,7 @@ title = 'My New Hugo Site'
 Navigate to the root of your Hugo project and use the `hugo new` command to create a file in the `content/docs` directory:
 
 ```shell
-hugo new docs/example-page.md
+hugo new docs/quick-start.md
 ```
 
 This will create a markdown file named `example-page.md` with the following default front matter:
