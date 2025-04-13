@@ -1,0 +1,38 @@
+# Hugo generated output directories
+/public/
+/resources/
+
+# Temporary and cache files
+.hugo_build.lock
+node_modules/
+tmp/
+
+# Dependency directories (if using npm/yarn for themes or assets)
+package-lock.json
+yarn.lock
+
+# OS and editor-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Sensitive or environment-specific files
+.env
+*.local
+*.secret
+config.local.yaml
+config.local.toml
+config.local.json
+
+# Keep your template files (adjust paths based on your template location)
+!themes/*/layouts/
+!themes/*/static/
+!themes/*/archetypes/
+!content/
+!data/
+!config.yaml
+!config.toml
+!config.json

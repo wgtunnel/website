@@ -1,0 +1,99 @@
+[hero]
+enable = true
+weight = 10
+template = "hero"
+title = "WG Tunnel"
+subtitle = "A FOSS Android client for WireGuard and AmneziaWG with auto-tunneling"
+info = "**Open Source** MIT Licensed."
+
+  [hero.backgroundImage]
+  path = "images/templates/hero"
+
+    [hero.backgroundImage.filename]
+    desktop = "gradient-desktop.webp"
+    mobile = "gradient-mobile.webp"
+
+  [hero.badge]
+  text = "v3.8.2"
+  color = "primary"
+  pill = false
+  soft = true
+
+  [hero.image]
+  path = "images"
+  filename = "main_screen.png"
+  alt = "Lotus Docs Screenshot"
+  boxShadow = true
+  rounded = true
+
+  [hero.ctaButton]
+  icon = "download"
+  btnText = "Download"
+  url = "https://github.com/wgtunnel/wgtunnel/releases/latest"
+
+  # [hero.cta2Button]
+  # icon = "construction"
+  # btnText = "In Development"
+  # url = "https://github.com/colinwilson/lotusdocs"
+
+  [hero.titleLogo]
+    path = "images/logo"
+    filename = "logo.webp"
+    alt = "Lotus Docs Logo"
+    height = "100px"
+
+
+[featureGrid]
+  enable = true
+  weight = 20
+  template = "feature grid"
+  title = "Why choose WG Tunnel?"
+  subtitle = "WG Tunnel is a fully FOSS (free and open-source software) Andriod WireGuard client. The app includes added capabilities not present in other WireGuard clients like AmneziaWG support, auto-tunneling, and much more."
+
+  [[featureGrid.items]]
+    title = "Auto-tunneling"
+    icon = "bolt"
+    description = "With auto-tunneling, tunnels are automatically turn on, off, or changed based on your network, completely customizable."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
+
+  [[featureGrid.items]]
+    title = "Censorship Resistance"
+    icon = "block"
+    description = "With AmneziaWG support, the app offers compatability with WireGuard and AmenziaWG servers to provide censorship resistance in various countries."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
+
+  [[featureGrid.items]]
+    title = "Android TV Support"
+    icon = "tv"
+    description = "All features of this app (minus a few due to Android TV limitations) are available and work on Android TV devices."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
+
+  [[featureGrid.items]]
+    title = "Integration features"
+    icon = "robot"
+    description = "The app offers support for tiles, dynamic shortcuts, restore on restarts, and broadcast integration for automation apps like Tasker."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
+
+  [[featureGrid.items]]
+    title = "Active Development"
+    icon = "construction"
+    description = "This app is under continuous active development, with new feaures and ideas driven by the community in concert with the app developer."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
+
+  [[featureGrid.items]]
+    title = "Support Community"
+    icon = "help"
+    description = "The app developer and community are active and always willing to help answer questions or troubleshoot issues."
+    [featureGrid.items.ctaLink]
+      text = "learn more"
+      url = "/docs/"
