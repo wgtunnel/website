@@ -11,4 +11,5 @@ description = "A general overview of WG Tunnel."
 tags = ["auto", "auto-tunneling", "automation"]
 +++
 
-### WIP
+Auto-tunneling is arguably the core feature of WG Tunnel.
+
