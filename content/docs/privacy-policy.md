@@ -1,4 +1,4 @@
----
++++
 weight = 999
 date = "2025-04-13T18:42:53-04:00"
 lastmod = "2025-04-13T18:42:53-04:00"
@@ -10,7 +10,7 @@ toc = true
 description = "The privacy policy of WG Tunnel."
 publishdate = "2025-04-13T18:42:53-04:00"
 tags = ["Privacy"]
----
++++
 
 # Privacy Policy
 *Effective as of April 13, 2025*
@@ -18,7 +18,7 @@ tags = ["Privacy"]
 WG Tunnel provides an alternative Android client app for network tunnels using the WireGuard Protocol. WG Tunnel is committed to protecting your privacy. This Privacy Policy explains how the app handles your data.
 
 ## Information You Provide
-WG Tunnel does not collect, store, or transmit personal data, such as user inputs, VPN connection details, or device identifiers. No data is shared with WG Tunnel or any third parties (unless voluntarily done so via manual export of local logs), as the app does not use third-party analytics, advertising, or other services.
+WG Tunnel does not collect, store, or transmit personal data, such as user inputs, VPN connection details, or device identifiers. No data is shared with WG Tunnel or any third parties, as the app does not use third-party analytics, advertising, or other services.
 
 ## Optional Local Logging
 You may choose to enable local logging within the app. If enabled, logs related to the app’s operation (e.g., connection status) are written locally to your device. These logs are not transmitted or stored anywhere except your local device. You can disable logging at any time to prevent local log creation.
