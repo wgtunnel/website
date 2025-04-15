@@ -11,4 +11,14 @@ description = "The various Andorid integration features for WG Tunnel."
 tags = ["integrations"]
 +++
 
-## WIP
+The notable Android integration features of WG Tunnel.
+
+### Dynamic Shortcuts
+
+When enabling "App shortcuts" in the app's settings menu, the following four app shortcuts become
+available:
+- Vpn on
+- Vpn off
+- Start auto-tunnel
+- Stop auto-tunnel
+

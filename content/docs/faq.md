@@ -14,7 +14,7 @@ tags = ["faq"]
 
 This section details commonly asked questions and the answers to those questions.
 
-### Is WG Tunnnel supported on Android TV?
+### Is WG Tunnel supported on Android TV?
 
 Yes, the app is supported on Android TV.
 

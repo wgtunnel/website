@@ -7,7 +7,7 @@ author = "Zane Schepke"
 title = "Backends and Tunnels"
 icon = "handyman"
 toc = true
-description = "The backend options of WG Tunnel."
+description = "The backend and tunnel configuration capabilities of WG Tunnel."
 tags = ["backend", "kernel", "userspace"]
 +++
 
