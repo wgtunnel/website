@@ -12,7 +12,6 @@ publishdate = "2025-04-13T18:42:53-04:00"
 tags = ["Privacy"]
 +++
 
-# Privacy Policy
 *Effective as of April 13, 2025*
 
 WG Tunnel provides an alternative Android VPN client app using the WireGuard and AmneziaWG Protocols. WG Tunnel is committed to protecting your privacy. This Privacy Policy explains how the app handles your data.
