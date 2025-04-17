@@ -58,3 +58,8 @@ configuration on the peer.
 > <small> If you wish for a more precise exclusion of certain IPs from the tunnel, the [AllowedIps Calculator](https://www.procustodibus.com/blog/2021/03/wireguard-allowedips-calculator/)
  is a handy tool to accomplish generated the proper allowedIps list. </small>
 
+### Is it possible to change tunnels based on which app is open?
+
+Yes, this is possible, but it requires the app to have system level permissions. This is a strict process
+to be approved by Google and not a feature I'm currently looking to implement. In the future, I may consider
+exploring this feature more. 
