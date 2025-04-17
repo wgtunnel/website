@@ -7,8 +7,8 @@ author = "Zane Schepke"
 title = "Getting started"
 icon = "rocket_launch"
 toc = true
-description = "A general overview of WG Tunnel."
-tags = ["Beginners"]
+description = "Getting started guide for using WG Tunnel."
+tags = ["start", "quick"]
 +++
 
 ### WIP
