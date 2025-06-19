@@ -32,10 +32,20 @@ The currently active Wi-Fi network (as detected by the app) is displayed below t
 > **_NOTE:_** <small>If the network shows as `<unknown ssid>`, the app lacks permission to read the Wi-Fi network name. 
 > This is expected until you attempt to add a *trusted Wi-Fi name*, which will prompt a permission request.</small>
 
-#### Wi-Fi name via shell (Root only)
+#### Wi-Fi detection method
 
-Available only on rooted devices, this setting allows the app to read the Wi-Fi network name using a root shell, 
-eliminating the need for location permissions.
+This setting allows the user to select by which method WG Tunnel will attempt to get the Wi-Fi connection information
+for auto-tunneling (namely the SSID). 
+
+There are several options, each with different benefits and drawbacks:
+
+- ***Default***: Uses the preferred Android API based on the Android version. This
+is the most reliable method, but it can come with drawbacks on newer Android devices as it will query location information often.
+- ***Legacy***: Use the legacy Android API. This comes with the benefit of less frequent location queries, but at the risk of
+not working properly on some newer devices models. 
+- ***Root***: Uses a root shell. This option has the benefit on not requiring any location permission to the app nor location services
+to be active on the phone. The drawback is your device must be rooted to use this feature.
+
 
 #### Use name wildcards
 
