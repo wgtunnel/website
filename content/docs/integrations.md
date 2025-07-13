@@ -7,7 +7,7 @@ author = "Zane Schepke"
 title = "Android Integrations"
 icon = "smart_toy"
 toc = true
-description = "The various Andorid integration features for WG Tunnel."
+description = "The various Android integration features for WG Tunnel."
 tags = ["integrations", "intent", "broadcast", "automation", "tasker"]
 +++
 
