@@ -48,7 +48,7 @@ info = "**Open Source** MIT Licensed."
   weight = 20
   template = "feature grid"
   title = "Why choose WG Tunnel?"
-  subtitle = "WG Tunnel is a fully FOSS (free and open-source software) Andriod WireGuard client. The app includes added capabilities not present in other WireGuard clients like AmneziaWG support, auto-tunneling, and much more."
+  subtitle = "WG Tunnel is a fully FOSS (free and open-source software) Android WireGuard client. The app includes added capabilities not present in other WireGuard clients like AmneziaWG support, auto-tunneling, and much more."
 
   [[featureGrid.items]]
     title = "Auto-tunneling"
