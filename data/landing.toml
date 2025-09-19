@@ -61,7 +61,7 @@ info = "**Open Source** MIT Licensed."
   [[featureGrid.items]]
     title = "Censorship Resistance"
     icon = "block"
-    description = "With AmneziaWG support, the app offers compatability with WireGuard and AmenziaWG servers to provide censorship resistance in various countries."
+    description = "With AmneziaWG support, the app offers compatibility with WireGuard and AmenziaWG servers to provide censorship resistance in various countries."
     [featureGrid.items.ctaLink]
       text = "learn more"
       url = "/docs/"
