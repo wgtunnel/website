@@ -41,6 +41,18 @@ DNS = 1.1.1.1
 # PreDown = echo "Stopping WireGuard tunnel at $(date)" >> /data/adb/wg.log
 # PostDown = ip rule del from 192.168.1.0/24 table 200; ip route flush table 200
 
+## Optional Android-specific settings for including/excluding apps by package name
+# IncludedApplications = com.example.app1, com.example.app2
+
+## Optional ExcludedApplications: These apps will bypass the VPN tunnel, by package name
+## example applications to exclude:
+## Android Auto (com.google.android.projection.gearhead)
+## Google Chromecast (com.google.android.apps.chromecast.app)
+## GoPro (com.gopro.smarty)
+## RCS/Jibe messaging services (com.google.android.apps.messaging)
+## Sonos (com.sonos.acr and com.sonos.acr2)
+# ExcludedApplications = com.google.android.youtube, com.android.chrome, com.google.android.projection.gearhead, com.google.android.apps.chromecast.app
+
 [Peer]
 PublicKey = fE4xN3zK9pL8mWqT2rYvJ5uX6cD1bA0hG7iZkQ9oP2w=
 # Optional, if supported by your server
@@ -49,10 +61,4 @@ AllowedIPs = 0.0.0.0/0
 Endpoint = my-server.com:51820
 # Optional, not recommended by WG
 # PersistentKeepalive = 25
-
-# Optional Android-specific settings for including/excluding apps by package name
-# IncludedApplications = com.example.app1, com.example.app2
-
-# Optional ExcludedApplications: These apps will bypass the VPN tunnel, by package name
-# ExcludedApplications = com.google.android.youtube, com.android.chrome
 ```
