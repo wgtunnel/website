@@ -46,7 +46,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/wgtunnel/website/tree/master/packages/create-docusaurus/templates/shared/',
+            'https://github.com/wgtunnel/website/tree/master/docs',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
         },
@@ -57,7 +57,7 @@ const config: Config = {
             xslt: true,
           },
           editUrl:
-            'https://github.com/wgtunnel/website/tree/master/packages/create-docusaurus/templates/shared/',
+            'https://github.com/wgtunnel/website/tree/master/blog',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
