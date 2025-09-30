@@ -1,0 +1,44 @@
+import {downloadLatestStandaloneApk} from "../util/downloadApk";
+import OutlinedIconButton from '../components/buttons/OutlinedIconButton';
+import { FaGithub, FaMoon, FaGooglePlay } from 'react-icons/fa';
+import { SiFdroid } from 'react-icons/si';
+
+# Download WG Tunnel
+
+Get the latest release version:
+
+<div className="download-container">
+    <OutlinedIconButton
+        onClick= { () => {
+            window.open('https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel', '_blank')
+        }}
+        label="Google Play"
+        icon={FaGooglePlay}
+    />
+    <OutlinedIconButton
+        onClick= { () => {
+            window.open('https://f-droid.org/en/packages/com.zaneschepke.wireguardautotunnel/', '_blank')
+        }}
+        label="F-Droid"
+        icon={SiFdroid}
+    />
+    <OutlinedIconButton
+        onClick= { () => { downloadLatestStandaloneApk('https://api.github.com/repos/wgtunnel/wgtunnel/releases/latest') } }
+        label="GitHub APK"
+        icon={FaGithub}
+    />
+</div>
+
+<br/>
+
+Get the latest nightly version:
+
+:warning: **Note**: Nightly is the testing and development version. The releases are updated every night and may contain bugs or experimental features that can result in data loss.
+
+<div className="download-container">
+    <OutlinedIconButton
+        onClick={ () => { downloadLatestStandaloneApk('https://api.github.com/repos/wgtunnel/wgtunnel/releases/tags/nightly') }}
+        label="GitHub Nightly APK"
+        icon={FaMoon}
+    />
+</div>

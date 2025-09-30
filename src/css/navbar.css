@@ -1,0 +1,27 @@
+/* Navbar - Light Theme */
+[data-theme='light'] .navbar {
+    background-color: var(--background);
+    color: var(--text);
+}
+[data-theme='light'] .navbar__title,
+[data-theme='light'] .navbar__link {
+    color: var(--text);
+}
+[data-theme='light'] .navbar__link:hover,
+[data-theme='light'] .navbar__link--active {
+    color: var(--primary);
+}
+
+/* Navbar - Dark Theme */
+[data-theme='dark'] .navbar {
+    background-color: var(--background);
+    color: var(--text);
+}
+[data-theme='dark'] .navbar__title,
+[data-theme='dark'] .navbar__link {
+    color: var(--text);
+}
+[data-theme='dark'] .navbar__link:hover,
+[data-theme='dark'] .navbar__link--active {
+    color: var(--primary);
+}

@@ -1,0 +1,21 @@
+/* Hero Section - Light Theme */
+[data-theme='light'] .hero, [data-theme='light'] .heroBanner {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* Hero Section - Dark Theme */
+[data-theme='dark'] .hero, [data-theme='dark'] .heroBanner {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/*[data-theme='dark'] .hero__title,*/
+/*[data-theme='dark'] .hero__subtitle {*/
+/*  color: #ffffff; !* Dark mode title and subtitle color *!*/
+/*}*/
+
+/*[data-theme='light'] .hero__title,*/
+/*[data-theme='light'] .hero__subtitle {*/
+/*  color: #333333; !* Light mode title and subtitle color *!*/
+/*}*/

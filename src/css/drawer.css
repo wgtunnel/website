@@ -1,0 +1,28 @@
+[data-theme='light'] .navbar-sidebar,
+[data-theme='light'] .menu {
+    background-color: var(--background);
+    color: var(--text);
+}
+[data-theme='light'] .menu__link,
+[data-theme='light'] .navbar-sidebar__item {
+    color: var(--text);
+}
+[data-theme='light'] .menu__link:hover,
+[data-theme='light'] .menu__link--active {
+    color: var(--primary);
+}
+
+/* Drawer (Mobile Sidebar) - Dark Theme */
+[data-theme='dark'] .navbar-sidebar,
+[data-theme='dark'] .menu {
+    background-color: var(--background);
+    color: var(--text);
+}
+[data-theme='dark'] .menu__link,
+[data-theme='dark'] .navbar-sidebar__item {
+    color: var(--text);
+}
+[data-theme='dark'] .menu__link:hover,
+[data-theme='dark'] .menu__link--active {
+    color: var(--primary);
+}

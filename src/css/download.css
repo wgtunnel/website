@@ -1,0 +1,17 @@
+/* Download Page */
+.download-container {
+    background-color: var(--background);
+    color: var(--text);
+    text-align: start;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.download-links {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    margin-top: 1rem;
+}

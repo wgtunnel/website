@@ -1,0 +1,47 @@
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.downloadIconSvg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.downloadIconSvg svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text);
+}
+
+.featuresSection {
+  padding: 2rem 0;
+  background-color: var(--ifm-background-color);
+}
+
+.subHeader {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  margin-left: 2.5rem;
+  color: var(--text);
+}

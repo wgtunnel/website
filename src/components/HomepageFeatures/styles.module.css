@@ -1,0 +1,47 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.featureCard {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--background);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  height: 100%;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureSvg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.featureDescription {
+  margin-left: calc(1.5rem + 0.5rem);
+}
+
+

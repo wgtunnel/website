@@ -1,0 +1,97 @@
+import {
+    SiKofi,
+    SiGithubsponsors,
+    SiLiberapay,
+    SiBitcoin,
+    SiEthereum,
+    SiMonero,
+    SiZcash,
+    SiLitecoin, SiStellar, SiSolana, SiPolygon
+} from 'react-icons/si';
+import OutlinedIconButton from '../components/buttons/OutlinedIconButton';
+import CryptoDonations from '../components/CryptoDonations/CryptoDonations';
+
+# Donate
+
+Thank you for considering a donation to WG Tunnel!
+
+I’m Zane, the sole creator and maintainer of this project.
+Your donations keep WG Tunnel free, supported, and growing.
+Every contribution, no matter the size, goes directly to development and maintenance.
+
+I’m deeply grateful for your support and humbled by your trust in this project!
+
+Thank you,
+
+Zane
+
+### Donation Platforms
+
+<div className="download-container">
+    <OutlinedIconButton
+        onClick= { () => {
+            window.open('https://github.com/sponsors/zaneschepke', '_blank')
+        }}
+        label="GitHub Sponsors"
+        icon={SiGithubsponsors}
+    />
+    <OutlinedIconButton
+        onClick= { () => {
+            window.open('https://liberapay.com/zaneschepke', '_blank')
+        }}
+        label="Liberapay"
+        icon={ SiLiberapay }
+    />
+    <OutlinedIconButton
+        onClick= { () => {
+            window.open('https://ko-fi.com/zaneschepke', '_blank')
+        }}
+        label="Ko-fi"
+        icon={SiKofi}
+    />
+</div>
+
+<br/>
+
+### Cryptocurrency Addresses
+
+<CryptoDonations
+    addresses={[
+        {
+            name: 'Bitcoin (BTC)',
+            address: 'bc1qu6dwlwhav7cwp5gv3kyv3cpwrjrra80p75js6u',
+            icon: SiBitcoin
+        },
+        {
+            name: 'Monero (XMR)',
+            address: '44D1vWL4CqmEGiRhwtUy6MT2SgaCYpk5o3Nh6YxBFyoCXLZ5eZMLiDGj9uoo51mGjeiLxHWyV28MxDPUzQZN4PoqML16ZB9',
+            icon: SiMonero
+        },
+        {
+            name: 'Ethereum (ETH)',
+            address: '0xd711c24D0E355d9D694F60B42FdDAFd8653D2786',
+            icon: SiEthereum
+        },
+        {
+            name: 'ZCash (ZEC)',
+            address: 'u1fkx80l0mr7cgzmj5xusnf4fa0hlvttaedlqjzl657dyyfqq4tzq49v4ru53u8re0kfnlah7s363msewcva43v8a2rn8zqs56jeeu6m7snrfljs343kfkgv7gsa76xg005wz95855uwlrvgan0er8n3sp75mmmj44n3fnjar5y7jy0pd2k5yw33lgwpuectuknkwstdkkfyqvxh9xq6c',
+            icon: SiZcash
+        },
+        {
+            name: 'Solana (SOL)',
+            address: '5qPMZa2Y2R6D6AUzrofS4o2M1nzNpbMiAkcRcBkjsmwQ',
+            icon: SiSolana
+        },
+        {
+            name: 'Litecoin (LTC)',
+            address: 'ltc1q983jnz3n2zshp2xyme8ant45aah5hv337k8nm7',
+            icon: SiLitecoin
+        },
+        {
+            name: 'Stellar (XLM)',
+            address: 'GAOHREIPAOKSTD4ELXCMM7LDZPRGKJ2DNHEIXLU752PJS6CDPBAEM75B',
+            icon: SiStellar
+        },
+    ]}
+/>
+
