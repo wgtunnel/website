@@ -47,7 +47,7 @@ flowchart TB
     A["Device<br>Traffic"] --> B["Dummy VPN Service<br>(Kill Switch)"]
     B --> C["hev-socks5<br>tunnel"]
     C --> D["Local SOCKS5<br>Proxy"]
-    D --> E["gvisor/netstack<br>Tunnel"]
+    D --> E["gvisor/netstack<br> Virtual Tunnel"]
     E --> F["WireGuard<br>Server"]
     
     subgraph Optional

@@ -1,38 +1,30 @@
 # FAQ
 
-This section addresses commonly asked questions about WG Tunnel and provides detailed answers.
+This section addresses commonly asked questions about WG Tunnel.
 
 ## Is WG Tunnel supported on Android TV?
 
 Yes, WG Tunnel is supported on Android TV.
 
-Amazon Fire TV is not officially supported, but the app may work when sideloaded.
-
-## How do I add a tunnel?
-
-To add a tunnel, you need a WireGuard server or a VPN provider that allows exporting tunnel configurations for third-party apps.
-
-These configurations are typically provided as a `.conf` file or a QR code.
+Amazon Fire TV is not officially supported, but the app works when sideloaded.
 
 ## Does WG Tunnel work with Android Auto?
 
-Yes, WG Tunnel is compatible with Android Auto, but it requires specific configuration.
+Yes, WG Tunnel is compatible with Android Auto by leveraging the [split tunneling](tunnels#split-tunneling) feature.
 
-To enable compatibility, use the app’s split tunneling feature to exclude the Android Auto app from the tunnel.
-
-> **Note**: Refer to the [split tunneling configuration guide](#) for detailed instructions. *[TODO: Add link to split tunneling configuration guide.]*
+To enable compatibility, use [split tunneling](tunnels#split-tunneling) to exclude the Android Auto app package from the tunnel.
 
 ## Why are some features unavailable on Android TV?
 
 Android TV lacks certain capabilities and security features available on mobile Android devices.
 
-As a result, some WG Tunnel features are disabled on Android TV to ensure compatibility and security.
+As a result, some WG Tunnel features are disabled on Android TV to ensure compatibility.
 
 ## Why does WG Tunnel require location permissions for auto-tunneling?
 
-Android classifies Wi-Fi SSIDs as precise location information. For WG Tunnel to access the SSID for auto-tunneling, it requires location permissions.
+Android classifies Wi-Fi SSIDs as precise location information. For WG Tunnel to read the Wi-Fi name (SSID) for auto-tunneling, it requires location permission and location services enabled.
 
-> **Note**: This permission is only needed if you enable the *Tunnel on untrusted Wi-Fi* option in the auto-tunneling settings.
+To circumvent this, WG Tunnel supports alternative [Wi-Fi detection methods](auto-tunneling#wi-fi-detection-method) like [Shizuku](https://shizuku.rikka.app/).
 
 ## How do I exclude my local network from the tunnel to access local services and devices?
 
@@ -42,4 +34,8 @@ When editing a tunnel’s configuration, you can use the *Exclude LAN* action bu
 
 ## Can I switch tunnels based on which app is open?
 
-Yes, this is technically possible, but it requires system-level permissions, which are subject to a strict approval process by Google. This feature is not currently supported, but it may be considered for future development.
+This is technically possible via automation apps like [Tasker](https://tasker.joaoapps.com/), but it is not yet built into WG Tunnel. It is planned for future versions.
+
+## Will WG Tunnel ever support other platforms, like desktop?
+
+A long-term goal is to create a desktop app, but this would take an immense amount of effort. This project only has a single developer and no funding for such an endeavor.
