@@ -1,92 +1,102 @@
-# Auto-tunneling
+---
+sidebar_position: 3
+---
 
-Auto-tunneling is a core feature of WG Tunnel, enabling users to automate the state of their tunnels based on their
-active network connection.
+# Auto-Tunneling
 
-### Auto-tunneling by Wi-Fi
+Auto-tunneling is a core feature of WG Tunnel that automatically connects and disconnects from tunnels based on conditions like your active network connection.
 
-These settings allow you to configure how auto-tunneling behaves for Wi-Fi networks.
+To enable auto-tunneling, tap the "Bolt" icon in the app's bottom navigation bar and select "Start".
 
-> **_NOTE:_** <small>To use specific tunnels under certain network conditions, configure these settings in each tunnel's
-> auto-tunneling settings. Auto-tunneling will respect these preferences, defaulting to the *primary* tunnel or the first
-> tunnel if no specific configuration is set.</small>
+## Key Concepts
 
-#### Tunnel on untrusted Wi-Fi
+Before diving into the settings, here's a quick overview of important terms used in auto-tunneling:
 
-This setting enables auto-tunneling to activate the tunnel on untrusted Wi-Fi networks. By default, no Wi-Fi networks
-are trusted, so the *primary* or first tunnel will activate automatically when connected to Wi-Fi.
+- **Default Tunnel**: The default tunnel you've set as your overall default in the app's main tunnel settings (covered in a separate section). This is the fallback tunnel used when no specific mapping applies.
+- **Mapped Tunnel**: A tunnel specifically assigned to a particular Wi-Fi network. When connected to that network, auto-tunneling prioritizes the mapped tunnel over the default.
+- **Preferred Tunnel**: Refers to the tunnel that auto-tunneling will use for a given network type. For Wi-Fi, this could be the default or a mapped tunnel. For mobile data or Ethernet, it's typically your default tunnel unless overridden.
 
-The currently active Wi-Fi network (as detected by the app) is displayed below this setting.
+These concepts allow flexible control over which tunnel activates based on your network.
 
-> **_NOTE:_** <small>If the network shows as `<unknown ssid>`, the app lacks permission to read the Wi-Fi network name.
-> This is expected until you attempt to add a *trusted Wi-Fi name*, which will prompt a permission request.</small>
+## Network-Based Tunneling
 
-#### Wi-Fi detection method
+Android prioritizes networks for internet connectivity in this order:
 
-This setting allows the user to select by which method WG Tunnel will attempt to get the Wi-Fi connection information
-for auto-tunneling (namely the SSID).
+1. Ethernet
+2. Wi-Fi
+3. Mobile data (cellular)
 
-There are several options, each with different benefits and drawbacks:
+Auto-tunneling responds to changes in your active network (the one Android is currently using for internet access).
 
-- ***Default***: Uses the preferred Android API based on the Android version. This
-  is the most reliable method, but it can come with drawbacks on newer Android devices as it will query location information often.
-- ***Legacy***: Use the legacy Android API. This comes with the benefit of less frequent location queries, but at the risk of
-  not working properly on some newer devices models.
-- ***Root***: Uses a root shell. This option has the benefit on not requiring any location permission to the app nor location services
-  to be active on the phone. The drawback is your device must be rooted to use this feature.
+### Active Network Display
 
+This section shows Android's current active network. If it's a Wi-Fi network, you'll also see details like the network name (SSID) and security type.
 
-#### Use name wildcards
+The goal is to give you clear insight into which network the app detects as active, helping you troubleshoot or verify auto-tunneling behavior.
 
-This setting enables the use of custom wildcard patterns when adding trusted Wi-Fi names. It supports both
-*whitelisting* (trusting) and *blacklisting* (marking as untrusted) Wi-Fi network names.
+> **Note:** If the network name appears as `<unknown ssid>`, this is Android's default response when the app lacks permissions to read the Wi-Fi name. This is normal until you add a trusted Wi-Fi name, which will prompt a permission request.
 
-> **_NOTE:_** <small>Special characters in Wi-Fi names must be escaped with a leading `\`. For example: `\(5G\) Wifi*`.
-> Special characters requiring escaping include: `.^$+{}[]|()` and `*?` when part of a Wi-Fi name.</small>
+### Tunnel on Wi-Fi
 
-Supported wildcard characters:
+When enabled, auto-tunneling automatically starts your preferred tunnel (default or mapped) whenever an active, internet-capable Wi-Fi connection is detected.
+
+#### Wi-Fi Detection Method
+
+Choose how WG Tunnel retrieves Wi-Fi details, such as the network name, for auto-tunneling. Each option has trade-offs:
+
+- **Default**: Uses Android's recommended API based on your device version. It's reliable but may query location data frequently on newer devices.
+- **Legacy**: Relies on older Android APIs. This reduces location queries but might not work well on some modern devices.
+- **Shizuku**: Leverages [Shizuku](https://shizuku.rikka.app/) to fetch the Wi-Fi name via a shell (no root needed), avoiding location permissions entirely, but requires the Shizuku service to be running.
+- **Root**: Uses a root shell for direct access. No location permissions or services are required, but your device must be rooted.
+
+#### Use Name Wildcards
+
+Enable this to use wildcard patterns when adding trusted Wi-Fi names and mapped Wi-Fi names. Wildcards support both whitelisting (trusting) and blacklisting (marking as untrusted) networks for more flexible rules.
+
+> **Note:** Escape special characters in Wi-Fi names with a leading `\`. For example: `\(5G\) Wifi*`. Characters needing escape include: `.^$+{}[]|()` and `*?` (when they're part of the actual Wi-Fi name).
+
+Supported wildcards:
 - `*`: Matches any sequence of characters.
-    - Example use cases:
+    - Examples:
         - Trust all networks: `*`
         - Trust networks starting with "Home": `Home*`
-- `!`: Marks a Wi-Fi name as untrusted (blacklist).
-    - Example use case:
-        - Mark a network as untrusted: `!Guest Wi-Fi`
-- `?`: Matches a single character.
-    - Example use case:
-        - Trust networks named "Home" followed by one character: `Home?`
+- `!`: Blacklists a network (marks as untrusted).
+    - Example: Blacklist "Guest Wi-Fi": `!Guest Wi-Fi`
+- `?`: Matches any single character.
+    - Example: Trust "Home" followed by one character: `Home?`
 
-These wildcards can be combined to create flexible whitelisting or blacklisting rules, such as trusting all networks
-except specific blacklisted ones.
+Combine wildcards for advanced rules, like trusting all networks except specific blacklisted ones.
 
-#### Trusted Wi-Fi names
+#### Trusted Wi-Fi Names
 
-This setting provides a textbox for adding trusted Wi-Fi names. If wildcards are enabled, you can use them to customize
-these names further.
+Add trusted Wi-Fi names here. Auto-tunneling will not activate on these networks, and will disable any active tunnels,
+as they are considered trusted and in no need of a tunnel. If wildcards are enabled, use them to create broader rules.
 
-#### Stop kill switch on trusted
+#### Tunnel Mapping
 
-When enabled, this setting configures auto-tunneling to disable the VPN kill switch (if active) when connected to a
-trusted Wi-Fi network.
+Map specific Wi-Fi names to tunnels. When connected to a mapped network, auto-tunneling uses or switches to that tunnel
+instead of the default or currently active tunnel. This is ideal for using different tunnels at home, work, or public spots.
+If wildcards are enabled, use them to create broader rules.
 
-### Auto-tunneling by other networks
+### Tunnel on Mobile Data
 
-These settings configure auto-tunneling for non-Wi-Fi networks.
+When enabled, auto-tunneling activates your preferred tunnel on a cellular connection. You can further configure a specific preferred tunnel for mobile data networks instead of using just the default.
 
-#### Tunnel on mobile data
+### Tunnel on Ethernet
 
-When enabled, auto-tunneling activates the corresponding tunnel when connected to a cellular network.
+When enabled, auto-tunneling activates your preferred tunnel on an Ethernet connection. You can further configure a specific preferred tunnel for Ethernet networks instead of using just the default.
 
-#### Tunnel on ethernet
+### Stop Tunnel on No Internet
 
-When enabled, auto-tunneling activates the corresponding tunnel when connected to an ethernet network.
+When enabled, auto-tunneling deactivates the active tunnel if no internet is detected. This helps save battery life by avoiding unnecessary tunnel operation.
 
-#### Stop tunnel on no internet
+## Other Settings
 
-When enabled, auto-tunneling deactivates the active tunnel if no internet connection is available.
+### Start on Boot
 
-#### Advanced - Debounce Delay
+Enable this to automatically launch the auto-tunneling service when your device boots up.
 
-This advanced setting lets users adjust the debounce delay, which controls how long auto-tunneling waits before
-responding to rapid network changes. Typically, this setting should remain untouched unless the user needs to fine-tune
-the speed of auto-tunneling’s response to network changes.
+### Debounce Delay
+
+This advanced setting controls how long auto-tunneling waits before reacting to rapid network changes.
+Leave it at the default unless you want to make auto-tunneling more responsive or attempt to improve the reliability. 
