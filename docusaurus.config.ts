@@ -46,7 +46,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/wgtunnel/website/tree/master/docs',
+            'https://github.com/wgtunnel/website/tree/master',
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
         },
@@ -57,7 +57,7 @@ const config: Config = {
             xslt: true,
           },
           editUrl:
-            'https://github.com/wgtunnel/website/tree/master/blog',
+            'https://github.com/wgtunnel/website/tree/master',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
