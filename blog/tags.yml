@@ -2,3 +2,8 @@ roadmap:
   label: Roadmap
   permalink: /roadmap
   description: Roadmap updates
+
+announcements:
+  label: Announcements
+  permalink: /announcements
+  description: Important Announcements
