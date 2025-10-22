@@ -26,8 +26,13 @@ These settings control global tunneling behavior, including modes and overrides.
 
 Choose the operational mode for WG Tunnel. Each mode suits different use cases:
 
-- **VPN**: Standard Android VPN setup, similar to most VPN apps. It captures all device traffic (or split-tunneled apps) and routes it through the WireGuard tunnel using VPN Service. Ideal for full-device protection.
-- **Proxy**: Uses a virtual tunnel exposed on either an HTTP proxy or a SOCKS5 proxy or both (local proxy servers). This mode doesn't claim the VPN Service, allowing other apps (e.g., AdGuard for ad-blocking/firewalling) to own it while forwarding traffic to WG Tunnel's virtual tunnel via the local proxy. Alternatively, run another VPN app and configure proxy-supporting apps (like browsers) to route through WG Tunnel. Use case: Layered security or selective proxying without conflicting VPN services.
+#### VPN
+
+Standard Android VPN setup, similar to most VPN apps. It captures all device traffic (or split-tunneled apps) and routes it through the WireGuard tunnel using VPN Service. Ideal for full-device protection.
+
+#### Proxy
+
+Uses a virtual tunnel exposed on either an HTTP proxy or a SOCKS5 proxy or both (local proxy servers). This mode doesn't claim the VPN Service, allowing other apps (e.g., AdGuard for ad-blocking/firewalling) to own it while forwarding traffic to WG Tunnel's virtual tunnel via the local proxy. Alternatively, run another VPN app and configure proxy-supporting apps (like browsers) to route through WG Tunnel. Use case: Layered security or selective proxying without conflicting VPN services.
 
 ```mermaid
 flowchart TB
@@ -40,12 +45,14 @@ flowchart TB
     end
 ```
 
-- **Lockdown**: This feature instantly activates and maintains a dummy VPN service that captures all device traffic at all times, functioning as a robust kill switch. It routes the captured traffic through hev-socks5-tunnel to a local SOCKS5 proxy, which then forwards it to our WireGuard gvisor/netstack virtual tunnel. This setup guarantees no traffic leaks outside the tunnel. Unlike Android's native always-on VPN kill switch, Lockdown supports optional bypassing of LAN traffic (configurable below). For resolving peer endpoints, it selectively bypasses a socket for DoH queries—using Cloudflare or AdGuard as set in DNS Settings—when necessary, enhancing overall privacy.
+#### Lockdown
+
+This feature instantly activates and maintains a dummy VPN service that captures all device traffic at all times, functioning as a robust kill switch. It routes the captured traffic through hev-socks5-tunnel to a local SOCKS5 proxy, which then forwards it to our WireGuard gvisor/netstack virtual tunnel. This setup guarantees no traffic leaks outside the tunnel. Unlike Android's native always-on VPN kill switch, Lockdown supports optional bypassing of LAN traffic (configurable below). For resolving peer endpoints, it selectively bypasses a socket for DoH queries—using Cloudflare or AdGuard as set in DNS Settings—when necessary, enhancing overall privacy.
 
 ```mermaid
 flowchart TB
     A["Device<br>Traffic"] --> B["Dummy VPN Service<br>(Kill Switch)"]
-    B --> C["hev-socks5<br>tunnel"]
+    B --> C["hev-socks5-tunnel"]
     C --> D["Local SOCKS5<br>Proxy"]
     D --> E["gvisor/netstack<br> Virtual Tunnel"]
     E --> F["WireGuard<br>Server"]
@@ -54,9 +61,9 @@ flowchart TB
         G["DoH Bypass for<br>Peer Endpoint Resolution"]
     end
 ```
-- **Kernel**: Leverages the device's kernel WireGuard module (root and supported Kernel required). No VPN Service needed, enabling multiple tunnels by default. Best for performance and multi-tunnel setups on rooted devices, but can have reliability drawbacks and supports less app features.
+#### Kernel (WireGuard only)
 
-> Note: Proxy and Lockdown modes may also support multi-tunneling in future updates, as they use virtual tunnels.
+Leverages the device's kernel WireGuard module (root and supported Kernel required). No VPN Service needed, enabling multiple tunnels by default. Best for performance and multi-tunnel setups on rooted devices, but can have reliability drawbacks and supports less app features.
 
 ### DNS Settings
 
