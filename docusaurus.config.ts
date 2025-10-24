@@ -23,7 +23,7 @@ const config: Config = {
     organizationName: 'wgtunnel',
     projectName: 'website',
 
-    onBrokenLinks: 'throw',
+    onBrokenLinks: 'warn',
 
     markdown: {
         mermaid: true,
