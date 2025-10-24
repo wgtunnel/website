@@ -122,6 +122,10 @@ const config: Config = {
                             label: 'Getting Started',
                             to: '/docs/getting-started',
                         },
+                        {
+                            label: 'FAQ',
+                            to: '/docs/faq',
+                        },
                     ],
                 },
                 {
@@ -145,8 +149,12 @@ const config: Config = {
                             to: '/blog',
                         },
                         {
-                            label: 'GitHub',
-                            href: githubUrl,
+                            label: 'RSS',
+                            href: '/blog/rss.xml',
+                        },
+                        {
+                            label: 'Atom',
+                            href: '/blog/atom.xml',
                         },
                     ],
                 },
