@@ -8,6 +8,18 @@ Yes, WG Tunnel is supported on Android TV.
 
 Amazon Fire TV is not officially supported, but the app works when sideloaded.
 
+## What is the difference between WG Tunnel's app flavors?
+
+WG Tunnel is a fully Free and Open Source Software (FOSS) app across all flavors, meaning users have the right to use, modify, and redistribute it, with the source code publicly available. Unlike some open source apps, none of the flavors include trackers or closed-source dependencies. The main differences lie in distribution channels, enabled features like in-app donation links, and the in-app updater (which allows for easy updates directly within the app).
+
+Comparison of the three flavors:
+
+| Flavor         | Distribution Channels              | In-App Donation Links | In-App Updater              | Notes                                                                                                         |
+|----------------|------------------------------------|-----------------------|-----------------------------|---------------------------------------------------------------------------------------------------------------|
+| **Google**     | Google Play Store                  | Disabled              | Disabled                    | Required by Google's policies to remove donation links and self-updating mechanisms. Still fully FOSS.        |
+| **F-Droid**    | F-Droid Repositories               | Enabled               | Disabled                    | Optimized for open-source ecosystems; updater disabled to comply with F-Droid's build and distribution rules. |
+| **Standalone** | Nightly builds and GitHub releases | Enabled               | Enabled (on support screen) | Full-featured version for direct downloads; ideal for users wanting the most flexibility.                     |
+
 ## Does WG Tunnel work with Android Auto?
 
 Yes, WG Tunnel is compatible with Android Auto by leveraging the [split tunneling](tunnels#split-tunneling) feature.
