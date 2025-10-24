@@ -148,14 +148,14 @@ const config: Config = {
                             label: 'Blog',
                             to: '/blog',
                         },
-                        {
-                            label: 'RSS',
-                            href: '/blog/rss.xml',
-                        },
-                        {
-                            label: 'Atom',
-                            href: '/blog/atom.xml',
-                        },
+                        // {
+                        //     label: 'RSS',
+                        //     href: '/blog/rss.xml',
+                        // },
+                        // {
+                        //     label: 'Atom',
+                        //     href: '/blog/atom.xml',
+                        // },
                     ],
                 },
                 {
