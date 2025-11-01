@@ -142,20 +142,12 @@ const config: Config = {
                     ],
                 },
                 {
-                    title: 'More',
+                    title: 'Resources',
                     items: [
                         {
-                            label: 'Blog',
-                            to: '/blog',
+                            label: 'Translate App',
+                            href: 'https://hosted.weblate.org/engage/wg-tunnel/',
                         },
-                        // {
-                        //     label: 'RSS',
-                        //     href: '/blog/rss.xml',
-                        // },
-                        // {
-                        //     label: 'Atom',
-                        //     href: '/blog/atom.xml',
-                        // },
                     ],
                 },
                 {
