@@ -8,7 +8,7 @@ WG Tunnel provides an alternative Android VPN client app using the WireGuard and
 WG Tunnel does not collect, store, or transmit personal data, such as user inputs, VPN connection details, or device identifiers. No data is shared with WG Tunnel or any third parties, as the app does not use third-party analytics, advertising, or other services.
 
 ## Optional Local Logging
-You may choose to enable local logging within the app. If enabled, logs related to the app’s operation (e.g., connection status) are written locally to your device. These logs are not transmitted or stored anywhere except your local device. You can disable logging at any time to prevent local log creation.
+You may choose to enable local logging within the app. If enabled, logs related to the app’s operation (like connection status) are written locally to your device. These logs are not transmitted or stored anywhere except your local device. You can disable logging at any time to prevent local log creation.
 
 ## Background Location
 When the auto-tunnel feature is enabled, the app reads your Wi-Fi SSID name in the background to determine whether to activate the VPN. This information is not stored, transmitted, or used for any other purpose. You can disable the auto-tunnel feature in the app settings to prevent background location access.

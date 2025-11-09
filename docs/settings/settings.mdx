@@ -32,7 +32,7 @@ Standard Android VPN setup, similar to most VPN apps. It captures all device tra
 
 #### Proxy
 
-Uses a virtual tunnel exposed on either an HTTP proxy or a SOCKS5 proxy or both (local proxy servers). This mode doesn't claim the VPN Service, allowing other apps (e.g., AdGuard for ad-blocking/firewalling) to own it while forwarding traffic to WG Tunnel's virtual tunnel via the local proxy. Alternatively, run another VPN app and configure proxy-supporting apps (like browsers) to route through WG Tunnel. Use case: Layered security or selective proxying without conflicting VPN services.
+Uses a virtual tunnel exposed on either an HTTP proxy or a SOCKS5 proxy or both (local proxy servers). This mode doesn't claim the VPN Service, allowing other apps (like AdGuard for ad-blocking/firewalling) to own it while forwarding traffic to WG Tunnel's virtual tunnel via the local proxy. Alternatively, run another VPN app and configure proxy-supporting apps (like browsers) to route through WG Tunnel. Use case: Layered security or selective proxying without conflicting VPN services.
 
 ```mermaid
 flowchart TB
@@ -47,7 +47,7 @@ flowchart TB
 
 #### Lockdown
 
-This feature instantly activates and maintains a dummy VPN service that captures all device traffic at all times, functioning as a robust kill switch. It routes the captured traffic through hev-socks5-tunnel to a local SOCKS5 proxy, which then forwards it to our WireGuard gvisor/netstack virtual tunnel. This setup guarantees no traffic leaks outside the tunnel. Unlike Android's native always-on VPN kill switch, Lockdown supports optional bypassing of LAN traffic (configurable below). For resolving peer endpoints, it selectively bypasses a socket for DoH queries—using Cloudflare or AdGuard as set in DNS Settings—when necessary, enhancing overall privacy.
+This feature instantly activates and maintains a dummy VPN service that captures all device traffic at all times, functioning as a robust kill switch. It routes the captured traffic through hev-socks5-tunnel to a local SOCKS5 proxy, which then forwards it to our WireGuard gvisor/netstack virtual tunnel. This setup guarantees no traffic leaks outside the tunnel. Unlike Android's native always-on VPN kill switch, Lockdown supports optional bypassing of LAN traffic (configurable below). For resolving peer endpoints, it bypasses a socket for a DoH query (where applicable using Cloudflare or AdGuard as set in DNS Settings) enhancing overall privacy.
 
 ```mermaid
 flowchart TB
@@ -61,13 +61,14 @@ flowchart TB
         G["DoH Bypass for<br>Peer Endpoint Resolution"]
     end
 ```
+
 #### Kernel (WireGuard only)
 
 Leverages the device's kernel WireGuard module (root and supported Kernel required). No VPN Service needed, enabling multiple tunnels by default. Best for performance and multi-tunnel setups on rooted devices, but can have reliability drawbacks and supports less app features.
 
 ### DNS Settings
 
-Configure DNS resolution for peer endpoints (e.g., resolving "my-server.com" in configs). Options:
+Configure DNS resolution for peer endpoints (like resolving "my-server.com" in configs). Options:
 
 - **System DNS**: Use Android's default DNS resolver.
 - **DoH (DNS over HTTPS)**: Secure alternative for privacy. Supported providers: Cloudflare (default) or AdGuard.
@@ -85,16 +86,13 @@ This allows fine-tuned integration with other apps.
 
 ### Allow LAN Traffic (Lockdown Mode Only)
 
-When enabled, bypasses local LAN traffic (e.g., 192.168.0.0/16) from the kill switch, allowing access to local devices while blocking external leaks.
+When enabled, bypasses local LAN traffic (all private IP address blocks) from the kill switch, allowing access to local devices while blocking external leaks.
 
-### Global Overrides
+:warning: **Note**: In rare cases, this can cause leaks depending on your DNS setup so use with caution.
 
-Enable this to apply universal settings to all tunnels without editing individual .conf files. Click in to configure:
+### Global Split Tunneling
 
-- Global split tunneling (included/excluded apps).
-- Peer DNS, MTU, AmneziaWG parameters, or scripts (as described in the Tunnels section).
-
-Overrides ignore matching properties in .conf files for convenience.
+Enable this to apply universal split tunneling settings to all tunnels without editing individual tunnels.
 
 ### Android Integrations
 
@@ -164,7 +162,7 @@ Example in [Tasker](https://tasker.joaoapps.com/):
 
 Monitor tunnel health and logs for troubleshooting. Tunnel health is shown on the main Tunnels screen via a green (healthy), red (unhealthy), or gray (unknown/stale) LED indicator. Health is determined hierarchically:
 
-1. **Logs Check**: Takes precedence. If logs indicate issues (e.g., handshake/UDP failures) within the last 2 minutes, marked unhealthy.
+1. **Logs Check**: Takes precedence. If logs indicate issues (like handshake/UDP failures) within the last 2 minutes, marked unhealthy.
 2. **Ping Check**: If logs are healthy or absent, checks ping reachability. Unreachable targets mark unhealthy.
 3. **Stats Check**: If no logs/pings, uses transfer stats. Zero RX bytes = unknown; stale (no recent activity) = stale; otherwise healthy.
 
@@ -182,7 +180,7 @@ Disabled in Proxy/Lockdown as they use virtual tunnels without direct ping suppo
 
 ### Local Logs Monitor
 
-When enabled, monitors app logs for health (e.g., detecting handshake/UDP issues). Click in to view live logs; top navigation drawer allows clearing or exporting logs.
+When enabled, monitors app logs for health (like detecting handshake/UDP issues). Click in to view live logs; top navigation drawer allows clearing or exporting logs.
 
 ## General
 

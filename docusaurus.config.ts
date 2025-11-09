@@ -9,7 +9,7 @@ const githubUrl = 'https://github.com/wgtunnel/wgtunnel'
 
 const config: Config = {
     title: appName,
-    tagline: 'A feature rich, open-source Android client for WireGuard.',
+    tagline: 'A WireGuard Android client with auto-tunneling, lockdown & proxying.',
     favicon: 'img/favicon.ico',
 
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

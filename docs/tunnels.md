@@ -14,7 +14,7 @@ Before exploring the features, here's a quick overview of important terms used i
 - **AmneziaWG**: An enhanced version of WireGuard designed for better resistance to censorship and deep packet inspection (DPI). It includes features like obfuscation parameters (Jc, Jmin, Jmax, S1, S2, H1-H4, I1-I5, J1-J3, ITIME) and protocol mimicking to evade detection by firewalls or ISPs.
 - **Default Tunnel**: The primary tunnel selected for quick connections or as a fallback in auto-tunneling (covered in the Auto-Tunneling section). Only one tunnel can be set as default at a time.
 - **Split Tunneling**: A feature that lets you route specific apps through the VPN while others bypass it, or vice versa, for customized traffic control.
-- **App Modes**: WG Tunnel supports four modes—VPN (standard routing), Lockdown (strict blocking), Proxy (SOCKS5 proxy), and Kernel (root-based kernel module). These are detailed in the app settings section later.
+- **App Modes**: WG Tunnel supports four modes, including VPN (standard routing), Lockdown (strict blocking), Proxy (SOCKS5/HTTP proxy), and Kernel (root-based kernel module). These are detailed in the app settings section later.
 
 ## Importing
 
@@ -25,49 +25,53 @@ To add new tunnels, tap the plus (+) button in the top navigation bar on the mai
 - **QR Code**: Scan a QR code that encodes a WireGuard or AmneziaWG configuration for quick setup.
 - **Clipboard**: Paste a configuration directly from your clipboard if you've copied it from another source.
 - **URL**: Enter a URL pointing to a .conf file or ZIP archive hosted online for remote import.
-- **Create from Scratch**: Use the built-in configuration form to manually enter all details, including interface and peer settings, without needing an external file.
+- **Create from Scratch**: Use the built-in configuration form to manually enter all tunnel details.
 
-The app uses the AmneziaWG backend by default, which is backwards compatible with standard WireGuard configurations and doesn't enable any Amnezia-specific functionality if no Amnezia values are configured—in such cases, it behaves identically to standard WireGuard. If a config includes Amnezia-specific parameters, it will enable enhanced DPI resistance.
+The app uses the AmneziaWG backend by default, which is backwards compatible with standard WireGuard configurations and doesn't enable any Amnezia functionality if no Amnezia values are configured. In this case, it behaves identically to standard WireGuard. If a config includes Amnezia parameters, it will enable Amnezia's DPI resistance.
 
 ## Managing Tunnels
 
 On the main Tunnels screen, you can view all your imported tunnels in a list. Key features include:
 
 - **Tunnel Sorting**: Tap the sorting button in the top navigation bar to enter a dedicated sorting screen. Here, long-press on a tunnel and drag it up or down to rearrange the order. This is useful for prioritizing frequently used connections.
-- **Long-Press Actions**: Long-press on a tunnel to select it and access additional options, such as creating a duplicate copy of the tunnel, deleting it, or downloading the selected tunnel(s). You can select multiple tunnels for batch actions. Downloading exports them as a ZIP file and opens a modal where you can choose to export as AmneziaWG or standard WireGuard configs (falling back to WireGuard if no Amnezia properties are configured).
-- **Tunnel Health Indicators**: Each tunnel displays an LED status icon: green for healthy, red for unhealthy, gray for unknown, and yellow for stale. Health is determined hierarchically based on monitoring features (detailed in Settings > Monitoring):
-    1. **Logs Check** (precedence): If logs show issues (e.g., handshake/UDP failures) within the last 2 minutes, it's unhealthy.
-    2. **Ping Check**: If logs are healthy/absent, checks ping reachability—unreachable targets mark unhealthy.
-    3. **Stats Check**: If no logs/pings, uses transfer stats: zero RX bytes = unknown; no recent activity = stale; otherwise healthy.
+- **Long-Press Actions**: Long-press on a tunnel to select it and access additional options, such as creating a duplicate copy of the tunnel, deleting it, or downloading the selected tunnel(s). Downloading exports them as a ZIP file and opens a modal where you can choose to export as AmneziaWG or standard WireGuard configs (falling back to WireGuard if no Amnezia properties are configured).
+- **Tunnel Health Indicators**: Each tunnel displays an LED status icon: green for healthy, red for unhealthy, gray for unknown, and yellow for stale. Health is determined hierarchically based on [monitoring features](settings#monitoring):
+    1. **Logs Check**: If logs show issues (like handshake/UDP failures) within the last 2 minutes, it's unhealthy.
+    2. **Ping Check**: If logs are healthy/absent, checks ping reachability if enabled. If unreachable, the tunnel is marked unhealthy.
+    3. **Stats Check**: If no logs/pings, uses transfer stats. If zero RX bytes, status unknown. If no recent activity/handshakes, tunnel is stale. Otherwise, the tunnel is healthy.
 
 Tapping on a tunnel opens its detailed view, where you can access settings and configuration options.
 
 ## Tunnel Settings
 
-Each tunnel has customizable settings to fine-tune its behavior. These apply per tunnel and can be adjusted independently. In the top navigation bar of this screen, you'll find two icons:
+Each tunnel has various settings to customize its behavior. These apply per tunnel and can be adjusted independently. In the top navigation bar of this screen, you'll find two icons:
 - **Pencil Icon**: Takes you to the Tunnel Configuration screen for editing the tunnel's details.
-- **QR Icon**: Opens a modal to display the tunnel's configuration as a QR code (in either WireGuard or AmneziaWG format, size permitting). This allows easy scanning and import into other apps.
+- **QR Icon**: Opens a modal to display the tunnel's configuration as a QR code (in either WireGuard or AmneziaWG format, size permitting). This allows easy scanning and import to other devices.
 
 ### Set as Default
 
-Mark this tunnel as your default. It will be used as the primary option for manual connections and as a fallback in auto-tunneling scenarios.
+This marks the tunnel as your default. It will be used as the primary option for manual connections and as a fallback in auto-tunneling scenarios.
 
 ### Split Tunneling
 
 Configure which apps route through the VPN:
 
-- **Included Applications**: List app package names (e.g., com.example.app) to force them through the tunnel.
+- **Included Applications**: List app package names (like com.example.app) to force them through the tunnel.
 - **Excluded Applications**: List apps to bypass the VPN entirely, allowing them to use your direct internet connection. Common examples include Android Auto (com.google.android.projection.gearhead), Google Chromecast (com.google.android.apps.chromecast.app), or RCS messaging (com.google.android.apps.messaging).
 
 This is ideal for scenarios where certain apps need unrestricted access or perform better without VPN overhead.
 
 ### Dynamic DNS Updates
 
-When enabled, the app monitors tunnel connectivity (via the app's monitoring features, detailed in the settings section). If issues are detected, it checks for IP changes in dynamic DNS endpoints by bypassing a socket from the tunnel (to make a DNS request outside the broken tunnel) and performing a DoH (DNS over HTTPS) request. If a new IP is found, it updates the peer endpoint automatically via the WireGuard UAPI, without stopping or restarting the tunnel. This ensures seamless connectivity for servers with changing IPs.
+When enabled, the app monitors tunnel connectivity (via the app's [monitoring features](settings#monitoring)). If issues are detected, it checks for IP changes in dynamic DNS endpoints by bypassing a socket from the tunnel (to make a DNS request outside the broken tunnel) and performing a DoH (DNS over HTTPS) request. If a new IP is found, it updates the peer endpoint automatically via the WireGuard UAPI, without stopping or restarting the tunnel. This ensures seamless connectivity for servers with dynamic IPs.
 
 ### Prefer IPv6 Peer Resolution
 
-Enable this to prioritize IPv6 addresses when resolving peer endpoints. This can improve performance on IPv6-capable networks but may cause issues if you switch to an IPv4-only environment. Use with caution and only if your setup supports it.
+Enable this to prioritize IPv6 addresses when resolving peer endpoints. This can improve performance on IPv6-capable networks but may cause issues if you switch to an IPv4-only environment. Use with caution and only if your setup/network supports it.
+
+### Metered Tunnel
+
+This is an override feature that allows you to designate a tunnel as metered. This is useful if there is a data usage limitation for that tunnel. Otherwise, leave disabled for Android to automatically default to your underlying network's metered status.
 
 ## Tunnel Configuration
 
@@ -86,14 +90,14 @@ These scripts require a rooted device but work across all app modes (VPN, Lockdo
 
 Access these via the three-dot menu in the Interface section:
 
-- **Enable Amnezia Compatibility Mode**: Automatically sets basic AmneziaWG parameters (e.g., Jc=4, Jmin=40, Jmax=70, S1=0, S2=0, H1=1, H2=2, H3=3, H4=4) for compatibility with standard WireGuard servers. This provides basic DPI protection, which helps evade network filters that inspect packet contents to block VPN traffic.
+- **Enable Amnezia Compatibility Mode**: Automatically sets basic AmneziaWG parameters (like Jc=4, Jmin=40, Jmax=70, S1=0, S2=0, H1=1, H2=2, H3=3, H4=4) for compatibility with standard WireGuard servers. This provides basic DPI protection, which helps evade network filters that inspect packet contents to block VPN traffic.
 - **Mimic Protocols**: Use AmneziaWG to disguise tunnel traffic as common protocols like DNS, SIP, or QUIC. This further enhances DPI resistance and works with standard WireGuard servers by obfuscating the traffic pattern.
 
 ### Peer Quick Actions
 
 Access these via the three-dot menu in the Peer section:
 
-- **Exclude LAN Networks**: Quickly set AllowedIPs to values that bypass local LAN traffic (e.g., excluding 192.168.0.0/16, 10.0.0.0/8, etc.), ensuring devices on your local network remain accessible without routing through the VPN.
+- **Exclude LAN Networks**: Quickly set AllowedIPs to values that bypass all local LAN traffic (all private IP address blocks, like 192.168.0.0/16, 10.0.0.0/8, etc.), ensuring devices on your local network remain accessible without routing through the VPN.
 
 ### AmneziaWG Obfuscation Parameters
 
@@ -151,7 +155,7 @@ When using AmneziaWG, you can configure these optional parameters for enhanced D
         - `<c>`: 32-bit packet counter (network byte order, unique in sequence).
         - `<t>`: 32-bit Unix timestamp (network byte order, unique).
         - `<r length>`: Cryptographically secure random bytes (length ≤ 1000).
-    - Recommended: I1 as hex snapshot of a real protocol (e.g., QUIC Initial); I2-I5 for added entropy with counters/timestamps/random.
+    - Recommended: I1 as hex snapshot of a real protocol (like QUIC); I2-I5 for added entropy with counters/timestamps/random.
     - Purpose: Increases entropy and disguises traffic as legitimate UDP protocols. If I1 missing, chain skipped (behaves as AmneziaWG 1.0).
     - Example: `I1 = <b 0xf6ab3267fa><c><b 0xf6ab><t><r 10>`
 
@@ -161,7 +165,7 @@ When using AmneziaWG, you can configure these optional parameters for enhanced D
     - Purpose: Further blurs timing/size profile with pseudorandom packets; complements Jc count.
 
 - **ITIME (Imitation Interval)**: Interval for sending the signature chain (I1-I5 + junk-train) and initiating special handshakes.
-    - Valid Range: Seconds (e.g., 0 to disable on some platforms).
+    - Valid Range: Seconds (0 to disable).
     - Recommended: 120
     - Purpose: Periodically triggers obfuscation to maintain DPI resistance without constant overhead. Set to 0 on Windows if needed.
 
