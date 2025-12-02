@@ -32,7 +32,10 @@ jobs:
           curl -L -f -o static/geo-temp.zip \
             "https://www.ip2location.com/download/?token=${IP2LOCATION_TOKEN}&file=DB1LITEBINIPV6"
           
-          unzip -p static/geo-temp.zip > static/geo/IP2LOCATION-LITE-DB1.IPV6.BIN
+          unzip -l static/geo-temp.zip
+          
+          unzip -p static/geo-temp.zip IP2LOCATION-LITE-DB1.IPV6.BIN > static/geo/IP2LOCATION-LITE-DB1.IPV6.BIN
+          
           rm static/geo-temp.zip
           
           SIZE=$(stat -c%s static/geo/IP2LOCATION-LITE-DB1.IPV6.BIN)
