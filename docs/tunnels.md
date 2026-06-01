@@ -129,22 +129,22 @@ When using AmneziaWG, you can configure these optional parameters for enhanced D
     - Purpose: Randomizes length (len(resp) = 92 + S2) for pattern disruption.
 
 - **H1 (Init Packet Magic Header)**: Random constant replacing predictable WireGuard identifier for initial packets.
-    - Valid Range: 0–2147483647 (unique from H2/H3/H4)
+    - Valid Range: 0–4294967295 (unique from H2/H3/H4)
     - Recommended: 1
     - Purpose: Resists DPI filtering by making headers unique per client.
 
 - **H2 (Response Packet Magic Header)**: Random constant for response packets.
-    - Valid Range: 0–2147483647 (unique)
+    - Valid Range: 0–4294967295 (unique)
     - Recommended: 2
     - Purpose: Obfuscates handshake replies.
 
 - **H3 (Underload Packet Magic Header)**: Random constant for keep-alive packets.
-    - Valid Range: 0–2147483647 (unique)
+    - Valid Range: 0–4294967295 (unique)
     - Recommended: 3
     - Purpose: Masks minimal data transfer to prevent DPI filtering of short pings.
 
 - **H4 (Transport Packet Magic Header)**: Random constant for data transport packets.
-    - Valid Range: 0–2147483647 (unique)
+    - Valid Range: 0–4294967295 (unique)
     - Recommended: 4
     - Purpose: Conceals regular traffic patterns.
 
