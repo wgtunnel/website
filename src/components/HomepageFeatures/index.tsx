@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
     Svg: MdOutlineBolt,
     description: (
       <>
-          With auto-tunneling, tunnels are automatically turn on, off, or changed based on your network, completely customizable.
+          With auto-tunneling, tunnels are automatically turned on, off, or changed based on your network, completely customizable.
       </>
     ),
   },
@@ -29,7 +29,7 @@ const FeatureList: FeatureItem[] = [
     Svg: MdOutlineBlock,
     description: (
       <>
-          With AmneziaWG 1.5+ support, the app offers compatibility with WireGuard and AmenziaWG servers to provide censorship resistance.
+          With AmneziaWG 1.5+ support, the app offers compatibility with WireGuard and AmneziaWG servers to provide censorship resistance.
       </>
     ),
   },
@@ -65,7 +65,7 @@ const FeatureList: FeatureItem[] = [
         Svg: MdDns,
         description: (
             <>
-                Automatically detects Dynamic DNS changes and updates to the the latest server IP without restarting the tunnel.
+                Automatically detects Dynamic DNS changes and updates to the latest server IP without restarting the tunnel.
             </>
         ),
     },
