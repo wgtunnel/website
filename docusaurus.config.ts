@@ -154,7 +154,7 @@ const config: Config = {
                     items: [
                         {
                             label: 'Translate Android',
-                            href: 'https://translate.android.wgtunnel.com',
+                            href: 'https://translate.android.wgtunnel.com/project/wgtunnel/invite?h=11b5b7bf2099293095775d4477320c772818907',
                         },
                     ],
                 },
