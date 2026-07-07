@@ -153,8 +153,8 @@ const config: Config = {
                     title: 'Resources',
                     items: [
                         {
-                            label: 'Translate App',
-                            href: 'https://hosted.weblate.org/engage/wg-tunnel/',
+                            label: 'Translate Android',
+                            href: 'https://translate.android.wgtunnel.com',
                         },
                     ],
                 },
