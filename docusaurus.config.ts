@@ -40,6 +40,23 @@ const config: Config = {
         locales: ['en'],
     },
 
+    headTags: [
+        {
+            tagName: 'meta',
+            attributes: {
+                property: 'og:site_name',
+                content: appName,
+            },
+        },
+        {
+            tagName: 'meta',
+            attributes: {
+                name: 'application-name',
+                content: appName,
+            },
+        },
+    ],
+
     presets: [
         [
             'classic',
