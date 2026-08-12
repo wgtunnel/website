@@ -29,7 +29,7 @@ const FeatureList: FeatureItem[] = [
     Svg: MdOutlineBlock,
     description: (
       <>
-          With AmneziaWG 1.5+ support, the app offers compatibility with WireGuard and AmenziaWG servers to provide censorship resistance.
+          With AmneziaWG 1.5+ support, the app offers compatibility with WireGuard and AmneziaWG servers to provide censorship resistance.
       </>
     ),
   },
