@@ -4,9 +4,15 @@ sidebar_position: 1
 
 # Getting Started
 
-Before using WG Tunnel, it is important to understand that WG Tunnel is **not** a VPN provider.
+:::info
+These docs aren't a comprehensive UI reference as most of the app is meant to be self-explanatory.
+They focus on the features and settings that are a bit nuanced or benefit from more explanation than
+a screen can give on its own.
+:::
 
-The project does not provide WireGuard servers for public use.
+:::warning
+WG Tunnel is **not** a VPN provider. The project does not provide WireGuard servers for public use.
+:::
 
 Similar to the [official WireGuard Android app](https://github.com/WireGuard/wireguard-android), it is expected that
 users are already hosting their own server(s) or are exporting client configurations from their VPN service provider
@@ -20,7 +26,9 @@ The best option is to host your own WireGuard server on a **VPS** (Virtual Priva
 
 Many home routers have built-in WireGuard support. As long as your ISP (Internet Service Provider) does not use
 **CGNAT** (Carrier-Grade Network Address Translation), it is straightforward to host your own WireGuard server on a
-compatible home router.
+compatible home router. If you are behind **CGNAT**, WG Tunnel supports **IP4P** endpoints, which let
+you self-host without a stable public IP, see
+[Self-Hosting Behind CGNAT with IP4P](/docs/guides/ip4p-self-hosting) for a full walkthrough.
 
 There are many suitable VPS hosting providers and guides for hosting your own WireGuard server on a VPS.
 

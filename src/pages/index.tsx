@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Differentiator from '@site/src/components/Differentiator';
 import Heading from '@theme/Heading';
 import { useHistory } from '@docusaurus/router';
 
@@ -25,6 +26,7 @@ function HomepageHeader() {
             <OutlinedIconButton
                 onClick={() => { history.push('/download'); }}
                 label="Download"
+                large
             />
         </div>
       </div>
@@ -40,6 +42,7 @@ export default function Home(): ReactNode {
       description={`${siteConfig.tagline}`}>
       <HomepageHeader />
       <main>
+          <Differentiator />
           <section className={styles.featuresSection}>
               <div className="container">
                   <div className="row">

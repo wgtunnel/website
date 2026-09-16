@@ -1,0 +1,59 @@
+---
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import {IconTabItem} from '../components/buttons/IconTabItem';
+import Gallery from '../components/Gallery';
+import { FaAndroid, FaDesktop } from 'react-icons/fa';
+
+# Gallery
+
+<Tabs
+    groupId="platform"
+    queryString="platform"
+    defaultValue="android"
+    className="wide-platform-tabs"
+>
+
+    <IconTabItem
+        value="android"
+        label={
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <FaAndroid size={19} /> Android
+            </span>
+        }
+        default
+    >
+        <Gallery
+            images={[
+                'main_screen',
+                'config_screen',
+                'auto_screen',
+                'settings_screen',
+                'support_screen',
+            ].map((name) => ({
+                url: `https://raw.githubusercontent.com/wgtunnel/android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/${name}.png`,
+                alt: name.replace('_', ' '),
+            }))}
+        />
+    </IconTabItem>
+
+    <IconTabItem
+        value="desktop"
+        label={
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <FaDesktop size={19} /> Desktop
+            </span>
+        }
+    >
+        <Gallery
+            wide
+            images={['main_screen'].map((name) => ({
+                url: `https://raw.githubusercontent.com/wgtunnel/desktop/master/assets/screenshots/${name}.png`,
+                alt: name.replace('_', ' '),
+            }))}
+        />
+    </IconTabItem>
+
+</Tabs>

@@ -4,7 +4,7 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Dark mode only, matching apt.wgtunnel.com / fdroid.wgtunnel.com's palette. */
 :root {
   --ifm-color-primary: #76bebd;
   --ifm-color-primary-dark: #69a9a8;
@@ -13,20 +13,21 @@
   --ifm-color-primary-light: #83d3d2;
   --ifm-color-primary-lighter: #8ddad9;
   --ifm-color-primary-lightest: #a6e4e3;
-  --ifm-background-color: #f5f6f5;
-  --ifm-code-font-size: 95%;
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #76bebd;
-  --ifm-color-primary-dark: #69a9a8;
-  --ifm-color-primary-darker: #5f9e9d;
-  --ifm-color-primary-darkest: #508584;
-  --ifm-color-primary-light: #83d3d2;
-  --ifm-color-primary-lighter: #8ddad9;
-  --ifm-color-primary-lightest: #a6e4e3;
   --ifm-background-color: #21272a;
+  --ifm-background-surface-color: #2a3136;
+  --ifm-code-font-size: 95%;
+
+  /* Flat design: same treatment as apt/fdroid - no shadows anywhere, and
+     borders (where present at all) are the same near-invisible 8% divider,
+     never a hard outline. */
+  --ifm-card-border-radius: 12px;
+  --ifm-global-shadow-lw: none;
+  --ifm-global-shadow-md: none;
+  --ifm-global-shadow-tl: none;
+  --ifm-table-border-width: 0;
+  --ifm-alert-border-width: 0;
+  --ifm-toc-border-color: transparent;
+  --ifm-hr-border-color: rgba(255, 255, 255, 0.08);
 }
 
 .announcementBar,
@@ -37,3 +38,33 @@
   box-shadow: none !important;
 }
 
+/* Flat design everywhere: strip the harsh default borders/shadows Infima
+   puts on cards, code blocks, tables, admonitions, and pagination, in favor
+   of the same subtle 8%-white divider used on apt/fdroid (or none at all). */
+.card,
+.pagination-nav__link,
+div[class^='codeBlockContainer'] {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none !important;
+}
+
+.tabs,
+table,
+.admonition,
+.theme-doc-sidebar-menu,
+.theme-doc-toc-desktop,
+div[class^='tabItem'] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+table thead tr,
+table tbody tr,
+table th,
+table td {
+  border: none !important;
+}
+
+.tabs__item {
+  border: none !important;
+}

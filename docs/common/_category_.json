@@ -1,0 +1,8 @@
+{
+  "label": "Common Features",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Concepts and features shared identically between the Android and desktop apps."
+  }
+}

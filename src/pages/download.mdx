@@ -14,7 +14,7 @@ import {
     FaApple,
     FaAndroid
 } from 'react-icons/fa';
-import { SiFdroid } from 'react-icons/si';
+import { SiFdroid, SiChocolatey } from 'react-icons/si';
 
 import { downloadLatestAsset } from '../util/downloadLatestAsset';
 
@@ -47,16 +47,27 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
                     icon={FaGooglePlay}
                 />
                 <OutlinedIconButton
+                    onClick={() => { window.open('https://fdroid.wgtunnel.com/add.html', '_blank'); }}
+                    label="Add F-Droid repo"
+                    icon={SiFdroid}
+                />
+                <OutlinedIconButton
                     onClick={() => { window.open('https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel', '_blank'); }}
                     label="IzzyOnDroid"
                     icon={SiFdroid}
                 />
                 <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/wgtunnel/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
                     label="GitHub APK"
                     icon={FaGithub}
                 />
             </div>
+
+            <p>
+                <strong>Add F-Droid repo</strong> opens F-Droid or Droid-ify with this repository
+                (fingerprint included). Details:{' '}
+                <a href="https://fdroid.wgtunnel.com">fdroid.wgtunnel.com</a>.
+            </p>
 
             <h2>Nightly Build</h2>
 
@@ -67,7 +78,7 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 
             <div className="download-container">
                 <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/wgtunnel/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
                     label="GitHub Nightly APK"
                     icon={FaMoon}
                 />
@@ -88,16 +99,27 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 
             > ⚠️ **Requirements**
             >
-            > Only **Windows 10 (build 19041+)** or **Windows 11** are supported.
-            > Administrator rights required for installation.
+            > Only **Windows 10 (build 17134 / version 1803)** or later is supported, for Unix
+            > domain socket support. Administrator rights are required for installation, since
+            > the tunnel runs as a background system service.
 
             <div className="download-container">
                 <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*\.x64\.msix$/i)}
-                    label="Download .msix Installer"
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-win-x64-nsis\.exe$/i)}
+                    label="Download Installer (.exe)"
                     icon={FaWindows}
                 />
+                <OutlinedIconButton
+                    onClick={() => { window.open('https://community.chocolatey.org/packages/wgtunnel', '_blank'); }}
+                    label="Chocolatey"
+                    icon={SiChocolatey}
+                />
             </div>
+
+            **Install via Chocolatey**
+            ```powershell
+            choco install wgtunnel
+            ```
         </div>
     </IconTabItem>
 
@@ -117,60 +139,103 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
             > Only **systemd-based Linux distributions** are supported.
             > The firewall must use **nftables** or **iptables with the nft backend (`iptables-nft`)**.
 
-            <h3>Debian</h3>
+            <h3>Debian / Ubuntu</h3>
+
+            <p>Preferred: via the <a href="https://apt.wgtunnel.com">apt repository</a> (future updates land as regular <code>apt upgrade</code> updates):</p>
+
+            ```bash
+            curl -fsSL https://apt.wgtunnel.com/wgtunnel-archive-keyring.asc | \
+              sudo gpg --dearmor -o /usr/share/keyrings/wgtunnel-archive-keyring.gpg
+            echo "deb [signed-by=/usr/share/keyrings/wgtunnel-archive-keyring.gpg] https://apt.wgtunnel.com stable main" | \
+              sudo tee /etc/apt/sources.list.d/wgtunnel.list
+            sudo apt update
+            sudo apt install wgtunnel
+            ```
+
+            <p>Or, download the <code>.deb</code> directly from the latest release:</p>
 
             <div className="download-container">
                 <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel_.*_amd64\.deb$/i)}
-                    label="Download .deb Package"
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-amd64\.deb$/i)}
+                    label="Download .deb"
                     icon={FaLinux}
                 />
             </div>
 
-            **Install**
             ```bash
             sudo apt install ./wgtunnel*.deb
             ```
 
+            <h3>Fedora / RHEL</h3>
+
+            <p>Preferred: via <a href="https://copr.fedorainfracloud.org/coprs/zaneschepke/wgtunnel/">COPR</a> (future updates land as regular <code>dnf upgrade</code> updates):</p>
+
+            ```bash
+            sudo dnf copr enable zaneschepke/wgtunnel
+            sudo dnf install wgtunnel
+            ```
+
+            <p>Or, download the <code>.rpm</code> directly from the latest release:</p>
+
+            <div className="download-container">
+                <OutlinedIconButton
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x86_64\.rpm$/i)}
+                    label="Download .rpm"
+                    icon={FaLinux}
+                />
+            </div>
+
+            ```bash
+            sudo rpm -Uvh wgtunnel*.rpm
+            ```
+
             <h3>Arch Linux</h3>
 
-            <p>
-                For Arch, the app is available on the [AUR](https://aur.archlinux.org/packages/wgtunnel-bin).
-            You can install it using an AUR helper such as `yay`:
-            </p>
+            <p>Preferred: via the <a href="https://aur.archlinux.org/packages/wgtunnel-bin">AUR</a>:</p>
 
-            **Install**
             ```bash
             yay -S wgtunnel-bin
             ```
 
-            **Start Daemon**
+            > Per Arch packaging guidelines, this does not enable or start the daemon for you.
+
             ```bash
             sudo systemctl enable --now wgtunnel-daemon.service
             ```
 
-            <h3>Tarball Installation</h3>
+            <p>Or, download the <code>.pacman</code> package directly from the latest release:</p>
 
             <div className="download-container">
                 <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-amd64\.tar\.gz$/i)}
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.pacman$/i)}
+                    label="Download .pacman"
+                    icon={FaLinux}
+                />
+            </div>
+
+            ```bash
+            sudo pacman -U wgtunnel*.pacman
+            ```
+
+            <h3>Other distros (tarball)</h3>
+
+            <p>Use this only if none of the formats above fit your distro.</p>
+
+            <div className="download-container">
+                <OutlinedIconButton
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.tar\.gz$/i)}
                     label="Download Tarball"
                     icon={FaLinux}
                 />
             </div>
 
-            <p>From the directory where you downloaded the file:</p>
-
-            **Install**
             ```bash
-            tar -xzf wgtunnel-*.tar.gz && \
-            cd wgtunnel-*/ && \
-            curl -LO https://raw.githubusercontent.com/wgtunnel/desktop/master/scripts/linux/install.sh && \
-            chmod +x install.sh && \
-            ./install.sh
+            tar -xzf wgtunnel*-linux-x64.tar.gz
+            cd wgtunnel*-linux-x64/
+            sudo ./install.sh
             ```
 
-            <small>Optional uninstall script and full details available in the <a href="https://github.com/wgtunnel/desktop" target="_blank" rel="noopener noreferrer">desktop repository</a>.</small>
+            <small>In-app updates aren't available for direct downloads or the tarball install. See the <a href="https://github.com/wgtunnel/desktop#readme" target="_blank" rel="noopener noreferrer">desktop repository README</a> for full details on every install method.</small>
         </div>
     </IconTabItem>
 
@@ -183,9 +248,9 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
         }
     >
         <div>
-            <h2>Coming Soon!</h2>
+            <h2>Not Yet Supported</h2>
 
-            macOS support is actively in development (targeting mid-2026).
+            macOS support is planned for a future release.
 
             In the meantime, you can use the official WireGuard client.
         </div>
@@ -196,5 +261,5 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 <br/>
 
 **Source code & previous releases**
-• [Android](https://github.com/wgtunnel/wgtunnel)
+• [Android](https://github.com/wgtunnel/android)
 • [Desktop (Windows + Linux)](https://github.com/wgtunnel/desktop/releases)

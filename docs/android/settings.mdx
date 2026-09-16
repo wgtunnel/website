@@ -1,0 +1,169 @@
+---
+sidebar_position: 2
+---
+
+import ClickToRevealImage from "../../src/components/buttons/ShowImageButton";import React, { useState } from 'react';
+import intentTasker from './img/intent_tasker.png';
+
+# Settings
+
+The Settings screen provides app-wide configurations to customize WG Tunnel's behavior, from core tunneling modes to monitoring and integrations. Access it via the bottom navigation bar.
+
+## Tunnels
+
+These settings control global tunneling behavior, including modes and overrides.
+
+### App Mode
+
+Choose the operational mode for WG Tunnel. Each mode suits different use cases:
+
+#### VPN
+
+Standard Android VPN setup, similar to most VPN apps. It captures all device traffic (or split-tunneled apps) and routes it through the WireGuard tunnel using VPN Service. Ideal for full-device protection.
+
+#### Lockdown
+
+Android's implementation of the [Kill Switch](/docs/common/kill-switch). This app mode instantly activates and maintains a dummy VPN service that captures all device traffic at all times, functioning as a robust kill switch. It routes the captured traffic through hev-socks5-tunnel to a local SOCKS5 proxy, which then forwards it to our WireGuard gvisor/netstack virtual tunnel. This setup guarantees no traffic leaks outside the tunnel. Unlike Android's native always-on VPN kill switch, Lockdown supports optional bypassing of LAN traffic (configurable below).
+
+```text
+Device Traffic
+      │
+      ▼
+Dummy VPN Service (Kill Switch)
+      │
+      ▼
+hev-socks5-tunnel
+      │
+      ▼
+Local SOCKS5 Proxy
+      │
+      ▼
+gvisor/netstack Virtual Tunnel
+      │
+      ▼
+WireGuard Server
+```
+
+Peer endpoint resolution doesn't travel this chain, it goes out over a socket that bypasses it
+entirely, using whichever [Peer Resolution](/docs/common/dns#peer-resolution) method you've
+configured, so a broken or not-yet-established tunnel can't block the lookup.
+
+#### Proxy
+
+See [Local Proxy Mode](/docs/common/proxy-mode). On Android, this uses a virtual tunnel exposed on a
+local HTTP and/or SOCKS5 proxy, without claiming the VPN Service, allowing other apps (like AdGuard
+for ad-blocking/firewalling) to own it while forwarding traffic to WG Tunnel's virtual tunnel via the
+local proxy.
+
+```text
+Device Apps
+     │
+     ▼
+Local Proxy (HTTP/SOCKS5)
+     │
+     ▼
+gvisor/netstack Virtual Tunnel
+     │
+     ▼
+WireGuard Server
+```
+
+Optionally, another VPN, filter, or firewall app can sit in front of this proxy instead of pointing
+individual apps at it directly.
+
+> **Note:** A root-based kernel mode (using the device's in-kernel WireGuard module) was available in
+> versions prior to 5.0.0 but has since been removed in favor of a fully userspace architecture. See
+> the [FAQ](/docs/faq#is-kernel-mode-support-planned-for-android-or-desktop) for why.
+
+### DNS Settings
+
+See [Split & Encrypted DNS](/docs/common/dns) for the full split/encrypted DNS reference. Android
+additionally shows your current system DNS configuration on this screen, with a warning if Android's
+Private DNS setting conflicts with an active Tunnel DNS mode.
+
+### Proxy Settings (Proxy Mode Only)
+
+See [Local Proxy Mode](/docs/common/proxy-mode) for HTTP/SOCKS5 proxy configuration.
+
+### Allow LAN Traffic (Lockdown Mode Only)
+
+See [Kill Switch](/docs/common/kill-switch#allow-lan-traffic).
+
+### Tunnel Recovery
+
+See [Seamless Recovery](/docs/common/seamless-recovery) and Recovery Bounce Delay.
+
+### Tunnel Globals
+
+See [Tunnel Globals](/docs/common/tunnels#tunnel-globals) for DNS/AmneziaWG overrides. On Android,
+this screen also has a global [split tunneling](/docs/android/tunnels#split-tunneling) toggle, which
+applies the same included/excluded app list to every tunnel without editing them individually.
+
+### Android Integrations
+
+Integrate WG Tunnel with Android features like always-on VPN, home screen shortcuts, start-on-boot,
+and remote control via intents from apps like Tasker or MacroDroid (see below).
+
+#### Remote App Control with Intents
+
+WG Tunnel enables other apps (like Tasker, MacroDroid, etc.) to control toggling tunnels and auto-tunneling via intents.
+
+Available actions:
+- VPN on by tunnel name
+- VPN off by tunnel name
+- Toggle by tunnel name
+- Start auto-tunnel
+- Stop auto-tunnel
+
+> **Note:** For security, this feature must be enabled in settings, generating a key for intent validation. Copy the key from the app.
+
+Example request to start a tunnel:
+```shell
+am broadcast \                                               
+    -a com.zaneschepke.wireguardautotunnel.START_TUNNEL \
+    -n com.zaneschepke.wireguardautotunnel/com.zaneschepke.wireguardautotunnel.core.broadcast.RemoteControlReceiver \
+    --es key "<your-key>" --es tunnelName "<tun-name>"
+```
+Example request to start auto-tunnel:
+```shell
+am broadcast \                                               
+    -a com.zaneschepke.wireguardautotunnel.START_AUTO_TUNNEL \
+    -n com.zaneschepke.wireguardautotunnel/com.zaneschepke.wireguardautotunnel.core.broadcast.RemoteControlReceiver \
+    --es key "<your-key>"
+```
+
+List of all possible actions:
+- `com.zaneschepke.wireguardautotunnel.START_TUNNEL`
+- `com.zaneschepke.wireguardautotunnel.STOP_TUNNEL`
+- `com.zaneschepke.wireguardautotunnel.TOGGLE_TUNNEL`
+- `com.zaneschepke.wireguardautotunnel.START_AUTO_TUNNEL`
+- `com.zaneschepke.wireguardautotunnel.STOP_AUTO_TUNNEL`
+
+Component (important for security):
+- `com.zaneschepke.wireguardautotunnel/com.zaneschepke.wireguardautotunnel.core.broadcast.RemoteControlReceiver`
+
+> **Note:** If using a nightly or prerelease version, check the installed package name to adapt the first half of the component path.
+
+Extras:
+- `key`: Required for all requests; generated by the app.
+- `tunnelName`: Required for start/stop/toggle tunnel actions; defaults to primary/first tunnel if omitted.
+
+Example in [Tasker](https://tasker.joaoapps.com/):
+
+<ClickToRevealImage
+    src={intentTasker}
+    alt="Intent Configured in Tasker"
+    width="60%"
+    showButtonText="Show Screenshot"
+    hideButtonText="Hide Screenshot"
+/>
+
+## Monitoring
+
+See [Tunnel Health Indicators](/docs/common/tunnels#tunnel-health-indicators) for how tunnel health is
+determined.
+
+### Tunnel Statistics
+
+- **Live Tunnel Statistics**: Enable live transfer stats on the main Tunnels screen.
+- **Refresh Rate**: How often those stats update.

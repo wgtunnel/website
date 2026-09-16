@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react';
 import clsx from 'clsx';
-import { MdOutlineBolt, MdOutlineBlock, MdOutlineTv, MdDns, MdOutlineAndroid } from 'react-icons/md'
+import { MdOutlineBolt, MdDns, MdDesktopWindows, MdSyncAlt, MdAutorenew, MdSwapHoriz } from 'react-icons/md'
 import { LiaExchangeAltSolid } from 'react-icons/lia'
 import { BiSolidLockAlt } from 'react-icons/bi'
-import { FaTools, FaRegQuestionCircle } from 'react-icons/fa'
+import { PiShieldWarningBold } from 'react-icons/pi'
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -16,86 +16,86 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Auto-tunneling',
+    title: 'Auto-Tunneling',
     Svg: MdOutlineBolt,
     description: (
       <>
-          With auto-tunneling, tunnels are automatically turn on, off, or changed based on your network, completely customizable.
+          Tunnels automatically turn on, off, or switch based on your network conditions, fully customizable per network.
       </>
     ),
   },
   {
-    title: 'Censorship Resistance',
-    Svg: MdOutlineBlock,
+    title: 'Kill Switch',
+    Svg: BiSolidLockAlt,
     description: (
       <>
-          With AmneziaWG 1.5+ support, the app offers compatibility with WireGuard and AmenziaWG servers to provide censorship resistance.
+        A system-wide, tunnel-independent kill switch that blocks all traffic outside the tunnel, on both Android and desktop.
       </>
     ),
   },
   {
-    title: 'Proxying',
+    title: 'AmneziaWG Support',
+    Svg: PiShieldWarningBold,
+    description: (
+      <>
+        First class support for AmneziaWG 2.0 through 3.1 alongside standard WireGuard, for robust protection on restrictive networks.
+      </>
+    ),
+  },
+  {
+    title: 'Fully Native, Everywhere',
+    Svg: MdDesktopWindows,
+    description: (
+      <>
+        Android and desktop are both genuinely native apps with native performance. Desktop compiles to native executables, running the tunnel as a background service.
+      </>
+    ),
+  },
+  {
+    title: 'Split & Encrypted DNS',
+    Svg: MdDns,
+    description: (
+      <>
+        Resolve DNS through the tunnel via plain DNS, DoT, or DoH, and optionally split resolution by domain suffix.
+      </>
+    ),
+  },
+  {
+    title: 'Local Proxy Mode',
     Svg: LiaExchangeAltSolid,
     description: (
       <>
-        Proxy your applications or even other devices directly to your tunnels via a local HTTP and/or SOCKS5 proxy.
+        Expose any tunnel over a local SOCKS5 or HTTP proxy for individual apps or other devices to use.
       </>
     ),
   },
-    {
-        title: 'Android TV Support',
-        Svg: MdOutlineTv,
-        description: (
-            <>
-                All features of this app (minus a few due to Android TV limitations) are available and work on Android TV devices.
-            </>
-        ),
-    },
-    {
-        title: 'Lockdown Mode',
-        Svg: BiSolidLockAlt,
-        description: (
-            <>
-                A robust kill switch solution that prevents any data from leaking outside of the tunnel.
-            </>
-        ),
-    },
-    {
-        title: 'Dynamic DNS Updates',
-        Svg: MdDns,
-        description: (
-            <>
-                Automatically detects Dynamic DNS changes and updates to the the latest server IP without restarting the tunnel.
-            </>
-        ),
-    },
-    {
-        title: 'System Integrations',
-        Svg: MdOutlineAndroid,
-        description: (
-            <>
-                The app offers support for tiles, dynamic shortcuts, restore on restarts, and broadcast integration for automation apps like Tasker.
-            </>
-        ),
-    },
-    {
-        title: 'Active Development',
-        Svg: FaTools,
-        description: (
-            <>
-                This app is under continuous active development, with new features and ideas driven by the community in concert with the app developer.
-            </>
-        ),
-    },
-    {
-        title: 'Support Community',
-        Svg: FaRegQuestionCircle,
-        description: (
-            <>
-                The app developer and community are active and always willing to help answer questions or troubleshoot issues.
-            </>
-        ),
-    },
+  {
+    title: 'Dynamic DNS Recovery',
+    Svg: MdSyncAlt,
+    description: (
+      <>
+        When a tunnel fails, checks whether your server's dynamic DNS hostname now resolves to a new IP and updates the peer endpoint automatically, without dropping the tunnel or requiring a restart.
+      </>
+    ),
+  },
+  {
+    title: 'IPv6 Restore',
+    Svg: MdSwapHoriz,
+    description: (
+      <>
+        Prefers IPv6 endpoints when available, falling back to IPv4 automatically if the network doesn't support it, and proactively upgrading back to IPv6 once it does, all without dropping the tunnel.
+      </>
+    ),
+  },
+  {
+    title: 'Seamless Recovery',
+    Svg: MdAutorenew,
+    description: (
+      <>
+        Recovers from handshake failures or network changes by bouncing the connection alone, never tearing down the tunnel interface or kill switch, so you stay protected the whole time.
+      </>
+    ),
+  },
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {

@@ -12,6 +12,13 @@
     transition: border-color 0.3s, color 0.3s, background-color 0.3s;
 }
 
+/* Homepage hero CTA only - bigger, and matching the differentiator section's
+   body text size. Every other download-page button stays the base size. */
+.downloadButtonLarge {
+    padding: 1rem 2.25rem;
+    font-size: 1.05rem;
+}
+
 .downloadButton:hover {
     border-color: var(--primary);
     color: var(--primary);

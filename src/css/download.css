@@ -20,25 +20,47 @@
     margin-bottom: 2.5rem;
 }
 
+/* Platform picker: plain inline text+icon links, no box/border/background -
+   matching how every other nav control on the site works (navbar, footer),
+   rather than introducing a one-off boxed control just for this page. */
+.wide-platform-tabs .tabs {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 2rem !important;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.25rem;
+}
+
 .wide-platform-tabs .tabs__item {
-    padding: 1rem 1.75rem !important;
-    font-size: 1.1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    min-width: 135px;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 1.05rem;
+    font-weight: 600;
+    background: none;
+    border: none !important;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
+    color: var(--text-muted);
+    transition: color 0.15s ease;
+}
+
+.wide-platform-tabs .tabs__item:not(:last-child) {
+    margin-right: 2rem !important;
+}
+
+.wide-platform-tabs .tabs__item:hover {
+    color: var(--text);
+}
+
+.wide-platform-tabs .tabs__item--active {
+    color: var(--primary);
 }
 
 .wide-platform-tabs .tabs__item svg {
-    width: 22px;
-    height: 22px;
-}
-
-.wide-platform-tabs .tabs {
-    margin-bottom: 2rem;
+    width: 20px;
+    height: 20px;
 }
 
 .platform-section {
@@ -46,15 +68,12 @@
     flex-direction: column;
     gap: 0.8rem;
 }
+
 pre.prism-code.language-bash,
 pre.prism-code.language-shell,
-pre.prism-code.language-sh {
-    background-color: rgb(from var(--primary) r g b / 0.03) !important;
-}
-
-/* Optional: different color for light mode */
-[data-theme='light'] pre.prism-code.language-bash,
-[data-theme='light'] pre.prism-code.language-shell,
-[data-theme='light'] pre.prism-code.language-sh {
-    background-color: rgb(from var(--primary) r g b / 0.03) !important;
+pre.prism-code.language-sh,
+pre.prism-code.language-powershell,
+pre.prism-code.language-text {
+    background-color: var(--surface-elevated) !important;
+    border: 1px solid var(--border);
 }

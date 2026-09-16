@@ -1,0 +1,8 @@
+{
+  "label": "Desktop",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Features and settings specific to the WG Tunnel desktop app (Windows and Linux)."
+  }
+}

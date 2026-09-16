@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { IconType } from 'react-icons';
 import styles from './DownloadButton.module.css';
 
@@ -6,11 +7,12 @@ interface DownloadButtonProps {
     label: string;
     icon?: IconType | string;
     onClick: () => void | Promise<void>;
+    large?: boolean;
 }
 
-const OutlinedIconButton: React.FC<DownloadButtonProps> = ({ label, icon, onClick }) => {
+const OutlinedIconButton: React.FC<DownloadButtonProps> = ({ label, icon, onClick, large }) => {
     return (
-        <button onClick={onClick} className={styles.downloadButton}>
+        <button onClick={onClick} className={clsx(styles.downloadButton, large && styles.downloadButtonLarge)}>
             {typeof icon === 'string' ? (
                 <img src={icon} alt={`${label} icon`} className={styles.downloadIcon} />
             ) : (

@@ -1,0 +1,8 @@
+{
+  "label": "Guides",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Practical walkthroughs for specific setups, beyond WG Tunnel's own settings."
+  }
+}

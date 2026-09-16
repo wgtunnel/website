@@ -1,17 +1,22 @@
+/* Matches the palette used on apt.wgtunnel.com and fdroid.wgtunnel.com. */
 :root {
     --primary: #76bebd;
+    --primary-dim: rgba(118, 190, 189, 0.12);
     --background: #21272a;
+    --surface: #21272a;
+    --surface-elevated: #2a3136;
     --text: #ffffff;
+    --text-muted: #b8c0c4;
+    --border: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme='dark'] {
     --primary: #76bebd;
+    --primary-dim: rgba(118, 190, 189, 0.12);
     --background: #21272a;
+    --surface: #21272a;
+    --surface-elevated: #2a3136;
     --text: #ffffff;
-}
-
-[data-theme='light'] {
-    --primary: #76bebd;
-    --background: #f5f6f5;
-    --text: #21272a;
+    --text-muted: #b8c0c4;
+    --border: rgba(255, 255, 255, 0.08);
 }
