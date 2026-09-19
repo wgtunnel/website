@@ -26,7 +26,6 @@ const config: Config = {
     onBrokenLinks: 'warn',
 
     markdown: {
-        mermaid: true,
         hooks: {
             onBrokenMarkdownLinks: 'warn',
         },
@@ -92,8 +91,6 @@ const config: Config = {
         ],
     ],
 
-    themes: ['@docusaurus/theme-mermaid'],
-
     themeConfig: {
         image: 'img/social-card.jpg',
         colorMode: {
@@ -112,9 +109,6 @@ const config: Config = {
             backgroundColor: 'var(--background)',
             textColor: 'var(--text)',
             isCloseable: false,
-        },
-        mermaid: {
-            theme: { light: 'neutral', dark: 'dark' },
         },
         navbar: {
             title: appName,
@@ -159,11 +153,11 @@ const config: Config = {
                     ],
                 },
                 {
-                    title: 'Get WG Tunnel',
+                    title: 'Linux',
                     items: [
                         {
                             label: 'Download',
-                            to: '/download',
+                            to: '/download/?platform=linux',
                         },
                         {
                             label: 'AUR (Arch Linux)',
@@ -178,6 +172,19 @@ const config: Config = {
                             href: 'https://apt.wgtunnel.com',
                         },
                     ],
+                },
+                {
+                    title: 'Windows',
+                    items: [
+                        {
+                            label: 'Download',
+                            to: '/download/?platform=windows'
+                        },
+                        {
+                            label: 'Chocolatey',
+                            href: 'https://community.chocolatey.org/packages/wgtunnel'
+                        }
+                    ]
                 },
                 {
                     title: 'Community',
