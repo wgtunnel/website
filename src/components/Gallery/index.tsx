@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 
 interface GalleryImage {
@@ -9,6 +9,36 @@ interface GalleryImage {
 interface GalleryProps {
     images: GalleryImage[];
     wide?: boolean;
+}
+
+interface FadeImageProps {
+    src: string;
+    alt: string;
+    className?: string;
+}
+
+// Starts invisible and fades in once decoded, instead of popping in mid-layout as it streams in.
+function FadeImage({ src, alt, className }: FadeImageProps) {
+    const [loaded, setLoaded] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        setLoaded(imgRef.current?.complete ?? false);
+    }, [src]);
+
+    return (
+        <img
+            ref={imgRef}
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            className={[className, styles.fadeImage, loaded ? styles.loaded : '']
+                .filter(Boolean)
+                .join(' ')}
+        />
+    );
 }
 
 export default function Gallery({ images, wide }: GalleryProps) {
@@ -34,7 +64,7 @@ export default function Gallery({ images, wide }: GalleryProps) {
                         onClick={() => setOpenImage(image)}
                         aria-label={`View ${image.alt} full size`}
                     >
-                        <img src={image.url} alt={image.alt} loading="lazy" />
+                        <FadeImage src={image.url} alt={image.alt} />
                     </button>
                 ))}
             </div>
@@ -50,7 +80,7 @@ export default function Gallery({ images, wide }: GalleryProps) {
                         >
                             &times;
                         </button>
-                        <img src={openImage.url} alt={openImage.alt} />
+                        <FadeImage key={openImage.url} src={openImage.url} alt={openImage.alt} />
                     </div>
                 </div>
             )}

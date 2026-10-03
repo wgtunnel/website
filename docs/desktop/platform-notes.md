@@ -14,7 +14,8 @@ the encryption key kept in the OS keychain/credential store.
 ## Wayland and Linux Desktop Support
 
 WG Tunnel's desktop UI natively supports Wayland (with automatic X11 fallback if Wayland isn't
-available), ships as a GraalVM native image with no bundled JDK, and requires a `systemd`-based Linux
-distribution with `nftables` or `iptables-nft`. See the
+available), ships as a GraalVM native image with no bundled JDK, and requires `nftables` or
+`iptables-nft`. The daemon starts automatically at boot on `systemd`-based distributions. On other
+init systems it installs but needs to be started manually. See the
 [FAQ](/docs/faq#does-wg-tunnel-support-wayland) for details, and the
 [Download page](/download) for install instructions per distro.

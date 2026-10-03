@@ -66,8 +66,8 @@ managers or compositors that don't support Wayland yet.
 ## Does WG Tunnel ship as a Snap, Flatpak, or AppImage?
 
 No, and there's no plan currently to add these. WG Tunnel's daemon runs as a real system service
-(systemd on Linux) to manage routes, firewall rules, and boot-time features like the kill switch and
-tunnel restoration. Snap and Flatpak's sandboxing isn't built for apps that need to install, update,
+(via systemd where available) to manage routes, firewall rules, and boot-time features like the kill
+switch and tunnel restoration. Snap and Flatpak's sandboxing isn't built for apps that need to install, update,
 and communicate with a system-level daemon: the daemon would have to be shipped and updated entirely
 outside the sandbox, which introduces daemon/app version-compatibility handling and a lot of extra
 setup friction for very little benefit over the existing native packages. See the

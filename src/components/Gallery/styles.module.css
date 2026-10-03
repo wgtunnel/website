@@ -31,6 +31,15 @@
     height: auto;
 }
 
+.fadeImage {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.fadeImage.loaded {
+    opacity: 1;
+}
+
 .overlay {
     position: fixed;
     inset: 0;
@@ -82,6 +91,6 @@
 }
 
 @keyframes zoomIn {
-    from { transform: scale(0.96); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from { transform: scale(0.96); }
+    to { transform: scale(1); }
 }

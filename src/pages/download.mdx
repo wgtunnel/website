@@ -47,8 +47,8 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
                     icon={FaGooglePlay}
                 />
                 <OutlinedIconButton
-                    onClick={() => { window.open('https://fdroid.wgtunnel.com/add.html', '_blank'); }}
-                    label="Add F-Droid repo"
+                    onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
+                    label="WGT F-Droid"
                     icon={SiFdroid}
                 />
                 <OutlinedIconButton
@@ -58,16 +58,10 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
                 />
                 <OutlinedIconButton
                     onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
-                    label="GitHub APK"
-                    icon={FaGithub}
+                    label="Download .apk"
+                    icon={FaAndroid}
                 />
             </div>
-
-            <p>
-                <strong>Add F-Droid repo</strong> opens F-Droid or Droid-ify with this repository
-                (fingerprint included). Details:{' '}
-                <a href="https://fdroid.wgtunnel.com">fdroid.wgtunnel.com</a>.
-            </p>
 
             <h2>Nightly Build</h2>
 
@@ -79,8 +73,13 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
             <div className="download-container">
                 <OutlinedIconButton
                     onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
-                    label="GitHub Nightly APK"
+                    label="Download .apk"
                     icon={FaMoon}
+                />
+                <OutlinedIconButton
+                    onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
+                    label="WGT F-Droid"
+                    icon={SiFdroid}
                 />
             </div>
         </div>
@@ -136,8 +135,9 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 
             > ⚠️ **Requirements**
             >
-            > Only **systemd-based Linux distributions** are supported.
             > The firewall must use **nftables** or **iptables with the nft backend (`iptables-nft`)**.
+            > On **systemd-based distributions** the daemon starts automatically at boot. On other init
+            > systems it installs but needs to be started manually (or integrated with your init system).
 
             <h3>Debian / Ubuntu</h3>
 
@@ -259,7 +259,3 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 </Tabs>
 
 <br/>
-
-**Source code & previous releases**
-• [Android](https://github.com/wgtunnel/android)
-• [Desktop (Windows + Linux)](https://github.com/wgtunnel/desktop/releases)
