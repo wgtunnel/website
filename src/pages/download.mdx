@@ -141,15 +141,10 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
 
             <h3>Debian / Ubuntu</h3>
 
-            <p>Preferred: via the <a href="https://apt.wgtunnel.com">apt repository</a> (future updates land as regular <code>apt upgrade</code> updates):</p>
+            <p>Preferred: via the <a href="https://apt.wgtunnel.com">apt repository</a> (future updates land as regular <code>apt upgrade</code> updates). Review the script <a href="https://apt.wgtunnel.com/install.sh">here</a> before running it:</p>
 
             ```bash
-            curl -fsSL https://apt.wgtunnel.com/wgtunnel-archive-keyring.asc | \
-              sudo gpg --dearmor -o /usr/share/keyrings/wgtunnel-archive-keyring.gpg
-            echo "deb [signed-by=/usr/share/keyrings/wgtunnel-archive-keyring.gpg] https://apt.wgtunnel.com stable main" | \
-              sudo tee /etc/apt/sources.list.d/wgtunnel.list
-            sudo apt update
-            sudo apt install wgtunnel
+            wget -qO- https://apt.wgtunnel.com/install.sh | sh
             ```
 
             <p>Or, download the <code>.deb</code> directly from the latest release:</p>
@@ -247,12 +242,27 @@ import { downloadLatestAsset } from '../util/downloadLatestAsset';
             </span>
         }
     >
-        <div>
-            <h2>Not Yet Supported</h2>
+        <div className="platform-section">
+            <h2>Stable Release</h2>
 
-            macOS support is planned for a future release.
+            > ⚠️ **Requirements**
+            >
+            > Requires **macOS 13 (Ventura)** or later, on **Apple Silicon**. Intel Macs are not
+            > currently supported.
 
-            In the meantime, you can use the official WireGuard client.
+            <div className="download-container">
+                <OutlinedIconButton
+                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-mac-arm64\.dmg$/i)}
+                    label="Download .dmg"
+                    icon={FaApple}
+                />
+            </div>
+
+            <p>Open the <code>.dmg</code> and drag <strong>WG Tunnel</strong> into Applications.</p>
+
+            <p>On first launch, macOS will ask you to approve the background service - the app
+            prompts you with a button straight to <strong>System Settings → General → Login
+            Items &amp; Extensions</strong>.</p>
         </div>
     </IconTabItem>
 
