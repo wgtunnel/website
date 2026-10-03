@@ -140,15 +140,23 @@ const config: Config = {
             style: 'dark',
             links: [
                 {
-                    title: 'Docs',
+                    title: 'Android',
                     items: [
                         {
-                            label: 'Getting Started',
-                            to: '/docs/getting-started',
+                            label: 'Download',
+                            to: '/download/?platform=android',
                         },
                         {
-                            label: 'FAQ',
-                            to: '/docs/faq',
+                            label: 'IzzyOnDroid',
+                            to: 'https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel',
+                        },
+                        {
+                            label: 'WGT F-Droid',
+                            to: 'https://fdroid.wgtunnel.com',
+                        },
+                        {
+                            label: 'Google Play',
+                            to: 'https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel',
                         },
                     ],
                 },
@@ -221,8 +229,16 @@ const config: Config = {
                     ],
                 },
                 {
-                    title: 'Legal',
+                    title: 'Other',
                     items: [
+                        {
+                            label: 'Getting Started',
+                            to: '/docs/getting-started',
+                        },
+                        {
+                            label: 'FAQ',
+                            to: '/docs/faq',
+                        },
                         {
                             label: 'Privacy Policy',
                             to: '/privacy-policy',
