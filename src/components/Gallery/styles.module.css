@@ -10,15 +10,37 @@
 }
 
 .thumb {
+    position: relative;
     display: block;
     width: 100%;
     padding: 0;
-    background-color: var(--surface-elevated);
+    background: transparent;
     border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     transition: border-color 0.15s ease;
+}
+
+.thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0.03) 20%,
+        rgba(255, 255, 255, 0.09) 42%,
+        rgba(255, 255, 255, 0.03) 64%
+    );
+    background-size: 220% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.thumbReady::before {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .thumb:hover {
@@ -31,9 +53,17 @@
     height: auto;
 }
 
+.thumbFramed img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .fadeImage {
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity 0.5s ease;
 }
 
 .fadeImage.loaded {
@@ -85,6 +115,11 @@
     color: var(--primary);
 }
 
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -93,4 +128,17 @@
 @keyframes zoomIn {
     from { transform: scale(0.96); }
     to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .thumb::before,
+    .overlay,
+    .overlayContent img {
+        animation: none;
+    }
+
+    .fadeImage,
+    .thumbReady::before {
+        transition: none;
+    }
 }

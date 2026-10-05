@@ -1,0 +1,152 @@
+.root {
+    margin: 0.25rem 0 2rem;
+}
+
+.tablist {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    padding: 0.4rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.tablist:has(> :nth-child(4)) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tab {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    min-height: 3.5rem;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 1.075rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.tab span {
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: var(--text);
+}
+
+.tab:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.tabActive,
+.tabActive:hover {
+    background: var(--primary-dim);
+    color: var(--primary);
+    border-color: transparent;
+}
+
+.icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex-shrink: 0;
+}
+
+.panel {
+    padding-top: 1.5rem;
+}
+
+.panel[hidden] {
+    display: none;
+}
+
+.panel :global(h2) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 2.5rem 0 2rem;
+    font-size: 1.35rem;
+}
+
+.panel > :global(h2:first-of-type) {
+    margin-top: 0;
+}
+
+.panel :global(h3) {
+    margin: 1.75rem 0 2.25rem;
+    font-size: 1.15rem;
+}
+
+.panel :global(blockquote) {
+    color: var(--text);
+    border-left: 3px solid var(--primary);
+    background: transparent;
+    box-shadow: none;
+    margin: 2rem 0 2.25rem;
+    padding: 0.15rem 0 0.15rem 1rem;
+}
+
+.panel :global(h3) + :global(p) {
+    margin-bottom: 2.25rem;
+}
+
+.methods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2.5rem;
+    align-items: start;
+    margin: 0 0 0.25rem;
+}
+
+.methods:has(> :only-child) {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.method {
+    min-width: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.method .methodTitle {
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+}
+
+.method p:not(.methodTitle) {
+    margin: 0 0 1rem;
+}
+
+.method :global(.theme-code-block) {
+    margin: 0.85rem 0 1rem;
+}
+
+.method :global(.download-container) {
+    padding-bottom: 1.15rem;
+}
+
+@media (max-width: 768px) {
+    .tablist,
+    .tablist:has(> :nth-child(4)) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .methods {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

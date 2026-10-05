@@ -1,5 +1,5 @@
 .wrapper {
-    margin: 20px 0;
+    margin: 2rem 0 1.25rem;
 }
 
 .toggleButton {
@@ -21,10 +21,19 @@
 .cryptoItem {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid var(--text);
-    border-radius: 5px;
+    margin-bottom: 0.85rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: transparent;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.cryptoItem:hover {
+    background: var(--primary-dim);
+    border-color: rgba(118, 190, 189, 0.35);
 }
 
 .cryptoIcon {
@@ -50,13 +59,21 @@
 }
 
 .iconButton {
-    background: none;
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--text-muted);
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 0.35rem;
+    padding: 0.4rem;
 }
 
-.iconButton :hover {
+.iconButton:hover {
+    background: var(--primary-dim);
+    border-color: rgba(118, 190, 189, 0.35);
     color: var(--primary);
 }
 
@@ -75,15 +92,31 @@
 }
 
 .modalContent {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 12px;
     max-width: 80vw;
     max-height: 80vh;
     overflow: auto;
     word-break: break-word;
     overflow-wrap: anywhere;
-text-align: center;
+    text-align: center;
+}
+
+.qrPad {
+    display: inline-block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.75rem;
+    line-height: 0;
+}
+
+.modalAddress {
+    margin: 0.9rem 0 1.1rem;
+    color: var(--text-muted);
+    word-break: break-all;
 }
 
 .closeButton {
@@ -109,18 +142,19 @@ text-align: center;
 .downloadIconSvg svg {
     width: 100%;
     height: 100%;
-    fill: var(--text);
+    fill: currentColor;
+    color: var(--primary);
 }
 
 .copiedNotification {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: var(--text);
-    color: var(--background);
+    background-color: var(--background);
+    color: var(--primary);
+    border: 1px solid rgba(118, 190, 189, 0.35);
     padding: 10px 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     opacity: 0;
     animation: fadeInOut 2s ease-in-out;
     z-index: 1000;

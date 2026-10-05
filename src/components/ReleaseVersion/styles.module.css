@@ -1,0 +1,13 @@
+.version {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary);
+    background: var(--primary-dim);
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+    white-space: nowrap;
+}

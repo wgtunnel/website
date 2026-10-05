@@ -2,45 +2,69 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--background);
-    border: 1px solid var(--text);
+    gap: 0.55rem;
+    background: transparent;
+    border: 1px solid var(--border);
     color: var(--text);
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: border-color 0.3s, color 0.3s, background-color 0.3s;
-}
-
-/* Homepage hero CTA only - bigger, and matching the differentiator section's
-   body text size. Every other download-page button stays the base size. */
-.downloadButtonLarge {
-    padding: 1rem 2.25rem;
-    font-size: 1.05rem;
+    padding: 0.7rem 1.15rem;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
 }
 
 .downloadButton:hover {
-    border-color: var(--primary);
+    background: var(--primary-dim);
+    border-color: rgba(118, 190, 189, 0.35);
     color: var(--primary);
-    background-color: rgba(var(--text), 0.1);
+}
+
+.downloadButton:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Homepage hero only. One solid action, matching the F-Droid repo CTA. */
+.downloadButtonLarge {
+    background: var(--primary);
+    border-color: transparent;
+    border-radius: 999px;
+    color: #142022;
+    padding: 0.8rem 1.45rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.downloadButtonLarge:hover {
+    background: var(--primary);
+    border-color: transparent;
+    color: #142022;
+    filter: brightness(1.06);
+}
+
+.downloadIcon {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex-shrink: 0;
 }
 
 .downloadIconSvg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    margin-right: 0.5rem;
+    width: 1.15rem;
+    height: 1.15rem;
     flex-shrink: 0;
 }
 
 .downloadIconSvg svg {
     width: 100%;
     height: 100%;
-    fill: var(--text);
-}
-
-.downloadButton:hover .downloadIconSvg svg {
-    fill: var(--primary);
+    fill: currentColor;
 }

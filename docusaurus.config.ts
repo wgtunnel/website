@@ -195,6 +195,19 @@ const config: Config = {
                     ]
                 },
                 {
+                    title: 'macOS',
+                    items: [
+                        {
+                            label: 'Download',
+                            to: '/download/?platform=macos'
+                        },
+                        {
+                            label: 'Homebrew',
+                            href: 'https://github.com/wgtunnel/homebrew-wgtunnel'
+                        }
+                    ]
+                },
+                {
                     title: 'Community',
                     items: [
                         {

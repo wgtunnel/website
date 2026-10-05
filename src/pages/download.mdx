@@ -2,11 +2,9 @@
 hide_table_of_contents: true
 ---
 
-import Tabs from '@theme/Tabs';
-import {IconTabItem} from '../components/buttons/IconTabItem';
+import PlatformTabs, {PlatformTab, InstallMethods, InstallMethod} from '../components/PlatformTabs';
 import OutlinedIconButton from '../components/buttons/OutlinedIconButton';
 import {
-    FaGithub,
     FaMoon,
     FaGooglePlay,
     FaWindows,
@@ -14,258 +12,272 @@ import {
     FaApple,
     FaAndroid
 } from 'react-icons/fa';
-import { SiFdroid, SiChocolatey } from 'react-icons/si';
+import { SiFdroid, SiChocolatey, SiHomebrew } from 'react-icons/si';
 
 import { downloadLatestAsset } from '../util/downloadLatestAsset';
+import ReleaseVersion from '../components/ReleaseVersion';
 
 # Download WG Tunnel
 
 **Select your platform:**
 
-<Tabs
-    groupId="platform"
-    queryString="platform"
-    defaultValue="android"
-    className="wide-platform-tabs"
->
+<PlatformTabs defaultValue="android">
 
-    <IconTabItem
-        value="android"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaAndroid size={19} /> Android
-            </span>
-        }
-        default
-    >
-        <div className="platform-section">
-            <h2>Stable Release</h2>
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => { window.open('https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel', '_blank'); }}
-                    label="Google Play"
-                    icon={FaGooglePlay}
-                />
-                <OutlinedIconButton
-                    onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
-                    label="WGT F-Droid"
-                    icon={SiFdroid}
-                />
-                <OutlinedIconButton
-                    onClick={() => { window.open('https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel', '_blank'); }}
-                    label="IzzyOnDroid"
-                    icon={SiFdroid}
-                />
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
-                    label="Download .apk"
-                    icon={FaAndroid}
-                />
-            </div>
+    <PlatformTab value="android" label="Android" icon={FaAndroid}>
 
-            <h2>Nightly Build</h2>
+        ## Stable Release <ReleaseVersion repo="android" />
 
-            > ⚠️ **Note**
-            >
-            > The **Nightly** build is the testing and development version.
-            > It updates every night and may contain bugs or experimental features.
-
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
-                    label="Download .apk"
-                    icon={FaMoon}
-                />
-                <OutlinedIconButton
-                    onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
-                    label="WGT F-Droid"
-                    icon={SiFdroid}
-                />
-            </div>
+        <div className="download-container">
+            <OutlinedIconButton
+                onClick={() => { window.open('https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel', '_blank'); }}
+                label="Google Play"
+                icon={FaGooglePlay}
+            />
+            <OutlinedIconButton
+                onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
+                label="WGT F-Droid"
+                icon={SiFdroid}
+            />
+            <OutlinedIconButton
+                onClick={() => { window.open('https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel', '_blank'); }}
+                label="IzzyOnDroid"
+                icon={SiFdroid}
+            />
+            <OutlinedIconButton
+                onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
+                label="Download .apk"
+                icon={FaAndroid}
+            />
         </div>
-    </IconTabItem>
 
-    <IconTabItem
-        value="windows"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaWindows size={19} /> Windows
-            </span>
-        }
-    >
-        <div className="platform-section">
-            <h2>Stable Release</h2>
+        ## Nightly Build <ReleaseVersion repo="android-nightly" />
 
-            > ⚠️ **Requirements**
-            >
-            > Only **Windows 10 (build 17134 / version 1803)** or later is supported, for Unix
-            > domain socket support. Administrator rights are required for installation, since
-            > the tunnel runs as a background system service.
+        > ⚠️ **Note**
+        >
+        > The **Nightly** build is the testing and development version.
+        > It updates every night and may contain bugs or experimental features.
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-win-x64-nsis\.exe$/i)}
-                    label="Download Installer (.exe)"
-                    icon={FaWindows}
-                />
-                <OutlinedIconButton
-                    onClick={() => { window.open('https://community.chocolatey.org/packages/wgtunnel', '_blank'); }}
-                    label="Chocolatey"
-                    icon={SiChocolatey}
-                />
-            </div>
-
-            **Install via Chocolatey**
-            ```powershell
-            choco install wgtunnel
-            ```
+        <div className="download-container">
+            <OutlinedIconButton
+                onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
+                label="Download .apk"
+                icon={FaMoon}
+            />
+            <OutlinedIconButton
+                onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
+                label="WGT F-Droid"
+                icon={SiFdroid}
+            />
         </div>
-    </IconTabItem>
 
-    <IconTabItem
-        value="linux"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaLinux size={19} /> Linux
-            </span>
-        }
-    >
-        <div className="platform-section">
-            <h2>Stable Release</h2>
+    </PlatformTab>
 
-            > ⚠️ **Requirements**
-            >
-            > The firewall must use **nftables** or **iptables with the nft backend (`iptables-nft`)**.
-            > On **systemd-based distributions** the daemon starts automatically at boot. On other init
-            > systems it installs but needs to be started manually (or integrated with your init system).
+    <PlatformTab value="windows" label="Windows" icon={FaWindows}>
 
-            <h3>Debian / Ubuntu</h3>
+        ## Stable Release <ReleaseVersion repo="desktop" />
 
-            <p>Preferred: via the <a href="https://apt.wgtunnel.com">apt repository</a> (future updates land as regular <code>apt upgrade</code> updates). Review the script <a href="https://apt.wgtunnel.com/install.sh">here</a> before running it:</p>
+        > ⚠️ **Requirements**
+        >
+        > Only **Windows 10 (build 17134 / version 1803)** or later is supported, for Unix
+        > domain socket support. Administrator rights are required for installation, since
+        > the tunnel runs as a background system service.
 
-            ```bash
-            wget -qO- https://apt.wgtunnel.com/install.sh | sh
-            ```
+        <InstallMethods>
+            <InstallMethod title="Package Manager">
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => { window.open('https://community.chocolatey.org/packages/wgtunnel', '_blank'); }}
+                        label="Chocolatey"
+                        icon={SiChocolatey}
+                    />
+                </div>
 
-            <p>Or, download the <code>.deb</code> directly from the latest release:</p>
+                **Install via Chocolatey**
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-amd64\.deb$/i)}
-                    label="Download .deb"
-                    icon={FaLinux}
-                />
-            </div>
+                ```powershell
+                choco install wgtunnel
+                ```
+            </InstallMethod>
 
-            ```bash
-            sudo apt install ./wgtunnel*.deb
-            ```
+            <InstallMethod title="Direct">
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-win-x64-nsis\.exe$/i)}
+                        label="Download Installer (.exe)"
+                        icon={FaWindows}
+                    />
+                </div>
+            </InstallMethod>
+        </InstallMethods>
 
-            <h3>Fedora / RHEL</h3>
+    </PlatformTab>
 
-            <p>Preferred: via <a href="https://copr.fedorainfracloud.org/coprs/zaneschepke/wgtunnel/">COPR</a> (future updates land as regular <code>dnf upgrade</code> updates):</p>
+    <PlatformTab value="linux" label="Linux" icon={FaLinux}>
 
-            ```bash
-            sudo dnf copr enable zaneschepke/wgtunnel
-            sudo dnf install wgtunnel
-            ```
+        ## Stable Release <ReleaseVersion repo="desktop" />
 
-            <p>Or, download the <code>.rpm</code> directly from the latest release:</p>
+        > ⚠️ **Requirements**
+        >
+        > The firewall must use **nftables** or **iptables with the nft backend (`iptables-nft`)**.
+        > On **systemd-based distributions** the daemon starts automatically at boot. On other init
+        > systems it installs but needs to be started manually (or integrated with your init system).
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x86_64\.rpm$/i)}
-                    label="Download .rpm"
-                    icon={FaLinux}
-                />
-            </div>
+        ### Debian / Ubuntu
 
-            ```bash
-            sudo rpm -Uvh wgtunnel*.rpm
-            ```
+        <InstallMethods>
+            <InstallMethod title="Package Manager">
+                Via [our apt repository](https://apt.wgtunnel.com). Review the script [here](https://raw.githubusercontent.com/wgtunnel/desktop/master/packaging/apt/install.sh) before running it:
 
-            <h3>Arch Linux</h3>
+                ```bash
+                wget -qO- https://apt.wgtunnel.com/install.sh | sh
+                ```
+            </InstallMethod>
 
-            <p>Preferred: via the <a href="https://aur.archlinux.org/packages/wgtunnel-bin">AUR</a>:</p>
+            <InstallMethod title="Direct">
+                Or, download the `.deb` directly from the latest release:
 
-            ```bash
-            yay -S wgtunnel-bin
-            ```
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-amd64\.deb$/i)}
+                        label="Download .deb"
+                        icon={FaLinux}
+                    />
+                </div>
 
-            > Per Arch packaging guidelines, this does not enable or start the daemon for you.
+                ```bash
+                sudo apt install ./wgtunnel*.deb
+                ```
+            </InstallMethod>
+        </InstallMethods>
 
-            ```bash
-            sudo systemctl enable --now wgtunnel-daemon.service
-            ```
+        ### Fedora / RHEL
 
-            <p>Or, download the <code>.pacman</code> package directly from the latest release:</p>
+        <InstallMethods>
+            <InstallMethod title="Package Manager">
+                Via [COPR](https://copr.fedorainfracloud.org/coprs/zaneschepke/wgtunnel/) (future updates land as regular `dnf upgrade` updates):
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.pacman$/i)}
-                    label="Download .pacman"
-                    icon={FaLinux}
-                />
-            </div>
+                ```bash
+                sudo dnf copr enable zaneschepke/wgtunnel
+                sudo dnf install wgtunnel
+                ```
+            </InstallMethod>
 
-            ```bash
-            sudo pacman -U wgtunnel*.pacman
-            ```
+            <InstallMethod title="Direct">
+                Or, download the `.rpm` directly from the latest release:
 
-            <h3>Other distros (tarball)</h3>
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x86_64\.rpm$/i)}
+                        label="Download .rpm"
+                        icon={FaLinux}
+                    />
+                </div>
 
-            <p>Use this only if none of the formats above fit your distro.</p>
+                ```bash
+                sudo rpm -Uvh wgtunnel*.rpm
+                ```
+            </InstallMethod>
+        </InstallMethods>
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.tar\.gz$/i)}
-                    label="Download Tarball"
-                    icon={FaLinux}
-                />
-            </div>
+        ### Arch Linux
 
-            ```bash
-            tar -xzf wgtunnel*-linux-x64.tar.gz
-            cd wgtunnel*-linux-x64/
-            sudo ./install.sh
-            ```
+        <InstallMethods>
+            <InstallMethod title="Package Manager">
+                Via the [AUR](https://aur.archlinux.org/packages/wgtunnel-bin):
 
-            <small>In-app updates aren't available for direct downloads or the tarball install. See the <a href="https://github.com/wgtunnel/desktop#readme" target="_blank" rel="noopener noreferrer">desktop repository README</a> for full details on every install method.</small>
+                ```bash
+                yay -S wgtunnel-bin
+                ```
+            </InstallMethod>
+
+            <InstallMethod title="Direct">
+                Or, download the `.pacman` package directly from the latest release:
+
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.pacman$/i)}
+                        label="Download .pacman"
+                        icon={FaLinux}
+                    />
+                </div>
+
+                ```bash
+                sudo pacman -U wgtunnel*.pacman
+                ```
+            </InstallMethod>
+        </InstallMethods>
+
+        > Per Arch packaging guidelines, this does not enable or start the daemon for you.
+
+        ```bash
+        sudo systemctl enable --now wgtunnel-daemon.service
+        ```
+
+        ### Other distros (tarball)
+
+        Use this only if none of the formats above fit your distro.
+
+        <div className="download-container">
+            <OutlinedIconButton
+                onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-linux-x64\.tar\.gz$/i)}
+                label="Download Tarball"
+                icon={FaLinux}
+            />
         </div>
-    </IconTabItem>
 
-    <IconTabItem
-        value="macos"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaApple size={19} /> macOS
-            </span>
-        }
-    >
-        <div className="platform-section">
-            <h2>Stable Release</h2>
+        ```bash
+        tar -xzf wgtunnel*-linux-x64.tar.gz
+        cd wgtunnel*-linux-x64/
+        sudo ./install.sh
+        ```
 
-            > ⚠️ **Requirements**
-            >
-            > Requires **macOS 13 (Ventura)** or later, on **Apple Silicon**. Intel Macs are not
-            > currently supported.
+        <small>In-app updates aren't available for direct downloads or the tarball install. See the <a href="https://github.com/wgtunnel/desktop#readme" target="_blank" rel="noopener noreferrer">desktop repository README</a> for full details on every install method.</small>
 
-            <div className="download-container">
-                <OutlinedIconButton
-                    onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-mac-arm64\.dmg$/i)}
-                    label="Download .dmg"
-                    icon={FaApple}
-                />
-            </div>
+    </PlatformTab>
 
-            <p>Open the <code>.dmg</code> and drag <strong>WG Tunnel</strong> into Applications.</p>
+    <PlatformTab value="macos" label="macOS" icon={FaApple}>
 
-            <p>On first launch, macOS will ask you to approve the background service - the app
-            prompts you with a button straight to <strong>System Settings → General → Login
-            Items &amp; Extensions</strong>.</p>
-        </div>
-    </IconTabItem>
+        ## Stable Release <ReleaseVersion repo="desktop" />
 
-</Tabs>
+        > ⚠️ **Requirements**
+        >
+        > Requires **macOS 13 (Ventura)** or later, on **Apple Silicon**. Intel Macs are not
+        > currently supported.
 
-<br/>
+        <InstallMethods>
+            <InstallMethod title="Package Manager">
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => { window.open('https://github.com/wgtunnel/homebrew-wgtunnel', '_blank'); }}
+                        label="Homebrew"
+                        icon={SiHomebrew}
+                    />
+                </div>
+
+                **Install via Homebrew**
+
+                ```bash
+                brew tap wgtunnel/wgtunnel
+                brew trust wgtunnel/wgtunnel
+                brew install --cask wg-tunnel
+                ```
+            </InstallMethod>
+
+            <InstallMethod title="Direct">
+                <div className="download-container">
+                    <OutlinedIconButton
+                        onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/desktop/releases/latest', /^wgtunnel-.*-mac-arm64\.dmg$/i)}
+                        label="Download .dmg"
+                        icon={FaApple}
+                    />
+                </div>
+
+                Or, open the `.dmg` and drag **WG Tunnel** into Applications.
+            </InstallMethod>
+        </InstallMethods>
+
+        On first launch, macOS will ask you to approve the background service. The app prompts you with a button straight to **System Settings → General → Login Items & Extensions**.
+
+    </PlatformTab>
+
+</PlatformTabs>

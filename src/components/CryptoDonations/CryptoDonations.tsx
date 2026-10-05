@@ -75,8 +75,10 @@ const CryptoDonations: React.FC<CryptoDonationsProps> = ({ addresses }) => {
             {modalAddress && (
                 <div className={styles.modalOverlay} onClick={closeModal}>
                     <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                        <QRCodeSVG value={modalAddress} size={256} />
-                        <p style={{ marginTop: '10px', color: 'black' }}>{modalAddress}</p>
+                        <span className={styles.qrPad}>
+                            <QRCodeSVG value={modalAddress} size={256} />
+                        </span>
+                        <p className={styles.modalAddress}>{modalAddress}</p>
                         <OutlinedIconButton label="Close" onClick={closeModal} />
                     </div>
                 </div>

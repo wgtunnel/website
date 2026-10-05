@@ -2,29 +2,17 @@
 hide_table_of_contents: true
 ---
 
-import Tabs from '@theme/Tabs';
-import {IconTabItem} from '../components/buttons/IconTabItem';
+import PlatformTabs, {PlatformTab} from '../components/PlatformTabs';
 import Gallery from '../components/Gallery';
 import { FaAndroid, FaDesktop } from 'react-icons/fa';
 
 # Gallery
 
-<Tabs
-    groupId="platform"
-    queryString="platform"
+<PlatformTabs
     defaultValue="android"
-    className="wide-platform-tabs"
+    aliases={{windows: 'desktop', linux: 'desktop', macos: 'desktop'}}
 >
-
-    <IconTabItem
-        value="android"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaAndroid size={19} /> Android
-            </span>
-        }
-        default
-    >
+    <PlatformTab value="android" label="Android" icon={FaAndroid}>
         <Gallery
             images={[
                 'main_screen',
@@ -35,25 +23,21 @@ import { FaAndroid, FaDesktop } from 'react-icons/fa';
             ].map((name) => ({
                 url: `https://raw.githubusercontent.com/wgtunnel/android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/${name}.png`,
                 alt: name.replace('_', ' '),
+                width: 1080,
+                height: 2400,
             }))}
         />
-    </IconTabItem>
+    </PlatformTab>
 
-    <IconTabItem
-        value="desktop"
-        label={
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FaDesktop size={19} /> Desktop
-            </span>
-        }
-    >
+    <PlatformTab value="desktop" label="Desktop" icon={FaDesktop}>
         <Gallery
             wide
             images={['main_screen'].map((name) => ({
                 url: `https://raw.githubusercontent.com/wgtunnel/desktop/master/assets/screenshots/${name}.png`,
                 alt: name.replace('_', ' '),
+                width: 1000,
+                height: 700,
             }))}
         />
-    </IconTabItem>
-
-</Tabs>
+    </PlatformTab>
+</PlatformTabs>
