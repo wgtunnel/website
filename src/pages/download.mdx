@@ -90,12 +90,23 @@ import ReleaseVersion from '../components/ReleaseVersion';
                         label="Chocolatey"
                         icon={SiChocolatey}
                     />
+                    <OutlinedIconButton
+                        onClick={() => { window.open('https://github.com/microsoft/winget-pkgs/tree/master/manifests/w/WGTunnel/WGTunnel', '_blank'); }}
+                        label="WinGet"
+                        icon={FaWindows}
+                    />
                 </div>
 
                 **Install via Chocolatey**
 
                 ```powershell
                 choco install wgtunnel
+                ```
+
+                **Install via WinGet**
+
+                ```powershell
+                winget install -e --id WGTunnel.WGTunnel
                 ```
             </InstallMethod>
 
