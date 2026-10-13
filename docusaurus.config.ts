@@ -168,15 +168,15 @@ const config: Config = {
                             to: '/download/?platform=linux',
                         },
                         {
-                            label: 'AUR (Arch Linux)',
+                            label: 'AUR',
                             href: 'https://aur.archlinux.org/packages/wgtunnel-bin',
                         },
                         {
-                            label: 'COPR (Fedora)',
+                            label: 'COPR',
                             href: 'https://copr.fedorainfracloud.org/coprs/zaneschepke/wgtunnel/',
                         },
                         {
-                            label: 'apt (Debian/Ubuntu)',
+                            label: 'apt',
                             href: 'https://apt.wgtunnel.com',
                         },
                     ],
@@ -236,8 +236,8 @@ const config: Config = {
                             href: 'https://github.com/wgtunnel/android',
                         },
                         {
-                            label: 'Translate Android',
-                            href: 'https://translate.android.wgtunnel.com/project/wgtunnel/invite?h=11b5b7bf2099293095775d4477320c772818907',
+                            label: 'Translate',
+                            href: 'https://translate.wgtunnel.com/project/wgtunnel/invite?h=11b5b7bf2099293095775d4477320c772818907',
                         },
                     ],
                 },
