@@ -1,9 +1,9 @@
 import React, {ReactNode} from 'react';
 import clsx from 'clsx';
-import { MdOutlineBolt, MdDns, MdDesktopWindows, MdSyncAlt, MdAutorenew, MdSwapHoriz } from 'react-icons/md'
+import { MdOutlineBolt, MdDns, MdDesktopWindows, MdSwapHoriz, MdAltRoute } from 'react-icons/md'
 import { LiaExchangeAltSolid } from 'react-icons/lia'
 import { BiSolidLockAlt } from 'react-icons/bi'
-import { PiShieldWarningBold } from 'react-icons/pi'
+import { PiShieldWarningBold, PiCodeBold } from 'react-icons/pi'
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
@@ -43,12 +43,12 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Fully Native, Everywhere',
-    Svg: MdDesktopWindows,
+    title: 'Multihop',
+    Svg: MdAltRoute,
     description: (
-      <>
-        Android and desktop are both genuinely native apps with native performance. Desktop compiles to native executables, running the tunnel as a background service.
-      </>
+        <>
+            Nest any of your tunnels inside another, mixing WireGuard and AmneziaWG freely. The entry hop sees your real IP but not your traffic, and the exit hop sees your traffic but not your real IP.
+        </>
     ),
   },
   {
@@ -70,29 +70,29 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Dynamic DNS Recovery',
-    Svg: MdSyncAlt,
+    title: 'Open Source & Independent',
+    Svg: PiCodeBold,
     description: (
       <>
-        When a tunnel fails, checks whether your server's dynamic DNS hostname now resolves to a new IP and updates the peer endpoint automatically, without dropping the tunnel or requiring a restart.
+        Fully open source, with no telemetry, ads, or proprietary code. Funded entirely by small-dollar donations from the community, with no investors or corporate interests.
       </>
     ),
   },
   {
-    title: 'IPv6 Restore',
+    title: 'Fully Native, Everywhere',
+    Svg: MdDesktopWindows,
+    description: (
+        <>
+            Android and desktop are both genuinely native apps with native performance. Desktop compiles to native executables, running the tunnel as a background service.
+        </>
+    ),
+  },
+  {
+    title: 'Tunnel Recovery',
     Svg: MdSwapHoriz,
     description: (
       <>
-        Prefers IPv6 endpoints when available, falling back to IPv4 automatically if the network doesn't support it, and proactively upgrading back to IPv6 once it does, all without dropping the tunnel.
-      </>
-    ),
-  },
-  {
-    title: 'Seamless Recovery',
-    Svg: MdAutorenew,
-    description: (
-      <>
-        Recovers from handshake failures or network changes by bouncing the connection alone, never tearing down the tunnel interface or kill switch, so you stay protected the whole time.
+        Continuously monitors handshake health and automatically recovers from network switches, NAT issues, IPv4/IPv6 endpoint failures, and dynamic server IPs, all without restarting the VPN.
       </>
     ),
   },

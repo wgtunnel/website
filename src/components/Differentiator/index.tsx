@@ -13,11 +13,10 @@ export default function Differentiator(): ReactNode {
                             Immediate protection
                         </Heading>
                         <p className={styles.body}>
-                            Most WireGuard clients resolve peer endpoints before bringing the tunnel up. You leak while
-                            it resolves, and if resolution never succeeds, the tunnel never comes up at all. WG Tunnel
-                            locks down traffic first, then resolves in the background, retrying until it succeeds. You
-                            can even toggle a tunnel on with no network connection at all, and it comes up immediately,
-                            connecting the moment you're online.
+                            WG Tunnel is intentionally designed for enhanced leak protection and reliability.
+                            As soon as you turn on your tunnel, you are protected. You can even turn on a tunnel
+                            when you have no network connection and it will automatically connect the moment
+                            you're online.
                         </p>
                         <a href="/docs/deferred-endpoint-bootstrapping" className={styles.learnMore}>
                             Learn how this works →
@@ -27,13 +26,13 @@ export default function Differentiator(): ReactNode {
                         <div className={`${styles.compareRow} ${styles.otherClients}`}>
                             <div className={styles.compareLabel}>Most WireGuard clients</div>
                             <p className={styles.compareText}>
-                                Resolve endpoints first, leaking while they wait → never comes up if resolution fails.
+                                Resolve endpoints first, leaking during resolution → never comes up if resolution fails.
                             </p>
                         </div>
                         <div className={`${styles.compareRow} ${styles.wgtunnel}`}>
                             <div className={styles.compareLabel}>WG Tunnel</div>
                             <p className={styles.compareText}>
-                                Locks down traffic first, no leaks → resolves endpoints in the background, retrying indefinitely.
+                                Locks down traffic first (no leaks) → resolves endpoints in the background, retrying indefinitely.
                             </p>
                         </div>
                     </div>
