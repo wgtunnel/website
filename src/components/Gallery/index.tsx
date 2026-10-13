@@ -5,8 +5,6 @@ import styles from './styles.module.css';
 interface GalleryImage {
     url: string;
     alt: string;
-    width?: number;
-    height?: number;
 }
 
 interface GalleryProps {
@@ -23,18 +21,17 @@ function remember(src: string) {
 interface FadeImageProps {
     src: string;
     alt: string;
-    width?: number;
-    height?: number;
 }
 
-function FadeImage({src, alt, width, height, onReady}: FadeImageProps & {onReady?: () => void}) {
+function FadeImage({src, alt, onReady}: FadeImageProps & {onReady?: (width: number, height: number) => void}) {
     const [loaded, setLoaded] = useState(() => decodedUrls.has(src));
     const imgRef = useRef<HTMLImageElement>(null);
 
     function mark() {
         remember(src);
         setLoaded(true);
-        onReady?.();
+        const img = imgRef.current;
+        if (img) onReady?.(img.naturalWidth, img.naturalHeight);
     }
 
     useLayoutEffect(() => {
@@ -49,8 +46,6 @@ function FadeImage({src, alt, width, height, onReady}: FadeImageProps & {onReady
             ref={imgRef}
             src={src}
             alt={alt}
-            width={width}
-            height={height}
             decoding="async"
             onLoad={mark}
             className={clsx(styles.fadeImage, loaded && styles.loaded)}
@@ -59,23 +54,24 @@ function FadeImage({src, alt, width, height, onReady}: FadeImageProps & {onReady
 }
 
 function Thumb({image, onOpen}: {image: GalleryImage; onOpen: () => void}) {
-    const framed = Boolean(image.width && image.height);
+    const [ratio, setRatio] = useState<number | undefined>();
     const [ready, setReady] = useState(() => decodedUrls.has(image.url));
 
     return (
         <button
             type="button"
-            className={clsx(styles.thumb, framed && styles.thumbFramed, ready && styles.thumbReady)}
-            style={framed ? {aspectRatio: `${image.width} / ${image.height}`} : undefined}
+            className={clsx(styles.thumb, ratio && styles.thumbFramed, ready && styles.thumbReady)}
+            style={ratio ? {aspectRatio: `${ratio}`} : undefined}
             onClick={onOpen}
             aria-label={`View ${image.alt} full size`}
         >
             <FadeImage
                 src={image.url}
                 alt={image.alt}
-                width={image.width}
-                height={image.height}
-                onReady={() => setReady(true)}
+                onReady={(width, height) => {
+                    setReady(true);
+                    if (width && height) setRatio(width / height);
+                }}
             />
         </button>
     );
@@ -137,13 +133,7 @@ export default function Gallery({images, wide}: GalleryProps): React.ReactElemen
                         >
                             &times;
                         </button>
-                        <FadeImage
-                            key={openImage.url}
-                            src={openImage.url}
-                            alt={openImage.alt}
-                            width={openImage.width}
-                            height={openImage.height}
-                        />
+                        <FadeImage key={openImage.url} src={openImage.url} alt={openImage.alt} />
                     </div>
                 </div>
             )}

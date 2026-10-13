@@ -19,12 +19,9 @@ import { FaAndroid, FaDesktop } from 'react-icons/fa';
                 'config_screen',
                 'auto_screen',
                 'settings_screen',
-                'support_screen',
             ].map((name) => ({
                 url: `https://raw.githubusercontent.com/wgtunnel/android/master/fastlane/metadata/android/en-US/images/phoneScreenshots/${name}.png`,
                 alt: name.replace('_', ' '),
-                width: 1080,
-                height: 2400,
             }))}
         />
     </PlatformTab>
@@ -35,8 +32,6 @@ import { FaAndroid, FaDesktop } from 'react-icons/fa';
             images={['main_screen'].map((name) => ({
                 url: `https://raw.githubusercontent.com/wgtunnel/desktop/master/assets/screenshots/${name}.png`,
                 alt: name.replace('_', ' '),
-                width: 1000,
-                height: 700,
             }))}
         />
     </PlatformTab>

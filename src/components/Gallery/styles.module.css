@@ -13,6 +13,7 @@
     position: relative;
     display: block;
     width: 100%;
+    aspect-ratio: 4 / 3;
     padding: 0;
     background: transparent;
     border: 1px solid var(--border);
