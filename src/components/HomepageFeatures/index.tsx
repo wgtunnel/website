@@ -70,11 +70,11 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Open Source & Independent',
-    Svg: PiCodeBold,
+    title: 'Tunnel Recovery',
+    Svg: MdSwapHoriz,
     description: (
       <>
-        Fully open source, with no telemetry, ads, or proprietary code. Funded entirely by small-dollar donations from the community, with no investors or corporate interests.
+        Continuously monitors handshake health and automatically recovers from network switches, NAT issues, IPv4/IPv6 endpoint failures, and dynamic server IPs, all without restarting the VPN.
       </>
     ),
   },
@@ -88,11 +88,11 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Tunnel Recovery',
-    Svg: MdSwapHoriz,
+    title: 'Open Source & Independent',
+    Svg: PiCodeBold,
     description: (
       <>
-        Continuously monitors handshake health and automatically recovers from network switches, NAT issues, IPv4/IPv6 endpoint failures, and dynamic server IPs, all without restarting the VPN.
+        Fully open source, with no telemetry, ads, or proprietary code. Funded entirely by small-dollar donations from the community, with no investors or corporate interests.
       </>
     ),
   },
