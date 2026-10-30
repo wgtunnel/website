@@ -143,30 +143,26 @@ const config: Config = {
                     title: 'Android',
                     items: [
                         {
-                            label: 'Download',
-                            to: '/download/?platform=android',
+                            label: 'Zapstore',
+                            href: 'https://zapstore.dev/apps?q=WG%20Tunnel',
                         },
                         {
                             label: 'IzzyOnDroid',
-                            to: 'https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel',
+                            href: 'https://apt.izzysoft.de/fdroid/index/apk/com.zaneschepke.wireguardautotunnel',
                         },
                         {
                             label: 'WGT F-Droid',
-                            to: 'https://fdroid.wgtunnel.com',
+                            href: 'https://fdroid.wgtunnel.com',
                         },
                         {
                             label: 'Google Play',
-                            to: 'https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel',
+                            href: 'https://play.google.com/store/apps/details?id=com.zaneschepke.wireguardautotunnel',
                         },
                     ],
                 },
                 {
                     title: 'Linux',
                     items: [
-                        {
-                            label: 'Download',
-                            to: '/download/?platform=linux',
-                        },
                         {
                             label: 'AUR',
                             href: 'https://aur.archlinux.org/packages/wgtunnel-bin',
@@ -185,12 +181,12 @@ const config: Config = {
                     title: 'Windows',
                     items: [
                         {
-                            label: 'Download',
-                            to: '/download/?platform=windows'
-                        },
-                        {
                             label: 'Chocolatey',
                             href: 'https://community.chocolatey.org/packages/wgtunnel'
+                        },
+                        {
+                            label: 'WinGet',
+                            href: 'https://winstall.app/apps/WGTunnel.WGTunnel'
                         }
                     ]
                 },

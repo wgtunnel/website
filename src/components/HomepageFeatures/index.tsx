@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import clsx from 'clsx';
-import { MdOutlineBolt, MdDns, MdDesktopWindows, MdSwapHoriz, MdAltRoute } from 'react-icons/md'
+import { MdOutlineBolt, MdDns, MdDesktopWindows, MdSwapHoriz, MdOutlineCallMerge } from 'react-icons/md'
 import { LiaExchangeAltSolid } from 'react-icons/lia'
 import { BiSolidLockAlt } from 'react-icons/bi'
 import { PiShieldWarningBold, PiCodeBold } from 'react-icons/pi'
@@ -44,7 +44,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Multihop',
-    Svg: MdAltRoute,
+    Svg: MdOutlineCallMerge,
     description: (
         <>
             Nest any of your tunnels inside another, mixing WireGuard and AmneziaWG freely. The entry hop sees your real IP but not your traffic, and the exit hop sees your traffic but not your real IP.
