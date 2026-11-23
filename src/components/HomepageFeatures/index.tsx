@@ -47,7 +47,7 @@ const FeatureList: FeatureItem[] = [
     Svg: MdOutlineCallMerge,
     description: (
         <>
-            Nest any of your tunnels inside another, mixing WireGuard and AmneziaWG freely. The entry hop sees your real IP but not your traffic, and the exit hop sees your traffic but not your real IP.
+            Run a tunnel inside another with layered encryption, so no single server sees both your IP and your traffic.
         </>
     ),
   },
@@ -74,7 +74,7 @@ const FeatureList: FeatureItem[] = [
     Svg: MdSwapHoriz,
     description: (
       <>
-        Continuously monitors handshake health and automatically recovers from network switches, NAT issues, IPv4/IPv6 endpoint failures, and dynamic server IPs, all without restarting the VPN.
+        Monitors handshake health and recovers from network switches, NAT issues, endpoint failures, and server IP changes, all without leaking traffic.
       </>
     ),
   },

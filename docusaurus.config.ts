@@ -144,7 +144,7 @@ const config: Config = {
                     items: [
                         {
                             label: 'Zapstore',
-                            href: 'https://zapstore.dev/apps?q=WG%20Tunnel',
+                            href: 'https://zapstore.dev/apps/com.zaneschepke.wireguardautotunnel',
                         },
                         {
                             label: 'IzzyOnDroid',

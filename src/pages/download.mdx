@@ -5,7 +5,6 @@ hide_table_of_contents: true
 import PlatformTabs, {PlatformTab, InstallMethods, InstallMethod} from '../components/PlatformTabs';
 import OutlinedIconButton from '../components/buttons/OutlinedIconButton';
 import {
-    FaMoon,
     FaGooglePlay,
     FaWindows,
     FaLinux,
@@ -16,6 +15,7 @@ import { SiFdroid, SiChocolatey, SiHomebrew } from 'react-icons/si';
 
 import { downloadLatestAsset } from '../util/downloadLatestAsset';
 import ReleaseVersion from '../components/ReleaseVersion';
+import ZapstoreIcon from '../components/icons/ZapstoreIcon';
 
 # Download WG Tunnel
 
@@ -44,6 +44,11 @@ import ReleaseVersion from '../components/ReleaseVersion';
                 icon={SiFdroid}
             />
             <OutlinedIconButton
+                onClick={() => { window.open('https://zapstore.dev/apps/com.zaneschepke.wireguardautotunnel', '_blank'); }}
+                label="Zapstore"
+                icon={ZapstoreIcon}
+            />
+            <OutlinedIconButton
                 onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/latest', /^wgtunnel-standalone-.*\.apk$/i)}
                 label="Download .apk"
                 icon={FaAndroid}
@@ -59,14 +64,19 @@ import ReleaseVersion from '../components/ReleaseVersion';
 
         <div className="download-container">
             <OutlinedIconButton
-                onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
-                label="Download .apk"
-                icon={FaMoon}
-            />
-            <OutlinedIconButton
                 onClick={() => { window.open('https://fdroid.wgtunnel.com', '_blank'); }}
                 label="WGT F-Droid"
                 icon={SiFdroid}
+            />
+            <OutlinedIconButton
+                onClick={() => { window.open('https://zapstore.dev/apps/com.zaneschepke.wireguardautotunnel', '_blank'); }}
+                label="Zapstore"
+                icon={ZapstoreIcon}
+            />
+            <OutlinedIconButton
+                onClick={() => downloadLatestAsset('https://api.github.com/repos/wgtunnel/android/releases/tags/nightly', /^wgtunnel-standalone-.*\.apk$/i)}
+                label="Download .apk"
+                icon={FaAndroid}
             />
         </div>
 
