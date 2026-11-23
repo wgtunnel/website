@@ -1,37 +1,50 @@
+import AuthorCard from '../components/AuthorCard';
+
 # About
 
-## How it started
+<AuthorCard name="Zane Schepke" role="Creator & maintainer of WG Tunnel" github="zaneschepke" />
 
-WG Tunnel didn't start out as an ambitious project. It began as a small, simple Android app with one
-job: turn a WireGuard tunnel on or off automatically based on which Wi-Fi network you were connected
-to. It was a very basic app with just on-demand tunneling that saved you from having to remember to
-flip a switch every time you left the house or got home.
+## Origin story
 
-## How it grew
+I started WG Tunnel in 2023 as an open-source hobby project with one simple goal: build an on-demand
+VPN app for WireGuard on Android. The official app didn't have it, and I was tired of manually
+toggling my VPN every time I got home, or tinkering with unreliable Tasker scripts to do it for me.
 
-That small idea kept growing. Auto-tunneling expanded to cover more network scenarios with custom
-tunnel mapping. A kill switch followed, then a local SOCKS5/HTTP proxy mode, dynamic DNS handling,
-and full support for AmneziaWG alongside standard WireGuard, giving users real censorship resistance
-against DPI-based network filtering. What started as a single-purpose utility became one of the more
-full-featured WireGuard clients available for Android, including support for Android TV.
+As it turned out, I wasn't the only one. The app quickly gained traction, and with it came requests
+for other features the official app was missing: deeper Android integration, proxy support,
+AmneziaWG, and more. Before long, I was fielding and building a plethora of features I'd never
+planned for, and the project goal had shifted from a simple on-demand VPN app to **building the best
+WireGuard client on Android**.
 
-Eventually, the same question kept coming up from users: *when is this coming to desktop?* After
-enough requests, and plenty of hours spent, WG Tunnel expanded to Windows and Linux, built as a real
-native application, not a wrapped web app, sharing the same tunnel engine and core feature set as
-Android.
+Then the requests for a desktop client started rolling in. After a lot of research and planning, I
+spent an entire winter and into the spring building the first version of WG Tunnel for desktop. With
+that, the project goal shifted once more: **to build the best WireGuard client, period**.
 
-## Who's behind it
+## The community
 
-WG Tunnel is built and maintained by a single developer, in the open, in whatever hours are available
-outside of everything else life demands. There's no company, no team, and no strings attached from government, corporate,
-and NGO backing. Just one person who cares about the project and the people using it, supported by small
-dollar donations from those who can spare them.
+I'm endlessly grateful for the community that has grown around WG Tunnel. You help drive the
+direction of the app and keep the project alive through translations, testing, feedback, and
+small-dollar donations. This project would not be possible without you. Thank you!
 
-## Free and open source, always
+## My promise
 
 Every part of WG Tunnel, Android and desktop, is fully open source. No trackers, no closed-source
-dependencies, no paywalled features. That's not going to change. If you'd like to see the code, report
-an issue, or contribute, everything lives on [GitHub](https://github.com/wgtunnel).
+dependencies, no paywalled features, and it's going to stay that way. I've received multiple offers
+from various... I'll be generous and call them "acquisition firms" looking to buy things like the
+app and its Google Play listing. That will never happen. **WG Tunnel will remain independently
+funded and community driven.**
 
-If WG Tunnel has been useful to you, consider [supporting its development](/donate). Every bit helps
-keep this project moving forward.
+## Keeping WG Tunnel going
+
+WG Tunnel has nearly a quarter million users, and I build and maintain it alongside part-time work,
+as a father, a husband, and the sole provider for my family. Most nights, you'll find me responding
+to messages, helping users debug issues, or developing new features.
+
+Since 2023, I've shipped over 130 releases across Android and desktop. The costs are real: test
+devices, development tools, and the code-signing certificates that Apple and Windows require. These
+are all paid out of my own pocket.
+
+I'm not asking for a handout. Donations decide how much of my time can go to WG Tunnel instead of
+other work or time with my family. My dream is to work on WG Tunnel full time, and your support is
+what could make that possible. Supporting the app means more features, faster fixes, and quicker
+help. If you've found WG Tunnel to be of value, please consider [supporting the project](/donate).
