@@ -224,12 +224,12 @@ const config: Config = {
                     title: 'Source',
                     items: [
                         {
-                            label: 'Desktop',
-                            href: 'https://github.com/wgtunnel/desktop',
+                            label: 'GitHub',
+                            href: githubUrl,
                         },
                         {
-                            label: 'Android',
-                            href: 'https://github.com/wgtunnel/android',
+                            label: 'ngit (Nostr)',
+                            href: 'https://gitworkshop.dev/npub193tl2rc9veyrgfs4zce4jfg7h9gtd9v03tqegq0mzxgf3vwx605sm8e5kc',
                         },
                         {
                             label: 'Translate',
